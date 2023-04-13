@@ -17,7 +17,22 @@ pageextension 50103 MyExtension extends "Item Card"
             {
                 ApplicationArea = All;
             }
+            field(ItemClass; ItemClass)
+            {
+                Caption = 'Class';
+                ApplicationArea = All;
+            }
 
+        }
+        addafter(GTIN)
+        {
+            field(ParentCode; ParentCode)
+            {
+                Caption = 'Parent Category';
+                ToolTip = 'Parent Category';
+                ApplicationArea = All;
+                Editable = false;
+            }
         }
         addafter(VariantMandatoryDefaultNo)
         {
@@ -32,9 +47,22 @@ pageextension 50103 MyExtension extends "Item Card"
     {
         // Add changes to page actions here
     }
+    /* trigger OnAfterGetRecord()
+     var
+         ItemCategory: Record "Item Category";
+     begin
+         ItemCategory.SetFilter(Code, Rec."Parent Category");
+         if (ItemCategory.Find('-')) then begin
+             ParentCode := ItemCategory."Parent Category";
+             Rec.Modify();
+         end;
+
+     end;*/
 
     var
         myInt: Integer;
+        ItemClass: Enum ItemClass;
+        ParentCode: Code[20];
 }
 
 pageextension 50104 MyExtension01 extends "Item List"
@@ -68,6 +96,8 @@ pageextension 50104 MyExtension01 extends "Item List"
         // Add changes to page actions here
     }
 
+
     var
         myInt: Integer;
+
 }
