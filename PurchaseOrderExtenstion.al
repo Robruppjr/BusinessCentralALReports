@@ -1,8 +1,18 @@
-pageextension 50106 EditingPurchaseOrder extends "Purchase Order"
+pageextension 50106 EditingPurchaseOrder extends "Purchase Lines"
 {
     layout
     {
-
+        addafter(Description)
+        {
+            field("Standard Cost"; Rec."Standard Cost")
+            {
+                ApplicationArea = All;
+            }
+            field(BuyPrice; Rec.BuyPrice)
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
     actions
@@ -31,10 +41,14 @@ tableextension 50107 EditingLineTableOfPO extends "Purchase Line"
 
     var
         myInt: Integer;
-        buyPrice: Decimal;
+        BuyPrice: Decimal;
+
 
     trigger OnAfterInsert()
+    var
+        Item: Record Item;
     begin
-        buyPrice: Item."Standard Cost"
+        BuyPrice := Item."Standard Cost" * 0.75;
+        Rec.Modify();
     end;
 }
