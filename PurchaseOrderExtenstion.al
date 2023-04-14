@@ -1,8 +1,8 @@
-pageextension 50106 EditingPurchaseOrder extends "Purchase Lines"
+pageextension 50106 EditingPurchaseOrder extends "Line"
 {
     layout
     {
-        addafter(Description)
+        addafter()
         {
             field("Standard Cost"; Rec."Standard Cost")
             {
