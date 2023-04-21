@@ -39,6 +39,11 @@ pageextension 50103 MyExtension extends "Item Card"
             field(Recycle; Rec.Recycle)
             {
                 ApplicationArea = All;
+                ObsoleteState = Pending;
+            }
+            field(Sellbrite; Rec.Sellbrite)
+            {
+                ApplicationArea = All;
             }
         }
     }
