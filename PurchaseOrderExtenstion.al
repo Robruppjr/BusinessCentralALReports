@@ -1,29 +1,3 @@
-pageextension 50106 EditingPurchaseOrder extends "Line"
-{
-    layout
-    {
-        addafter()
-        {
-            field("Standard Cost"; Rec."Standard Cost")
-            {
-                ApplicationArea = All;
-            }
-            field(BuyPrice; Rec.BuyPrice)
-            {
-                ApplicationArea = All;
-            }
-        }
-    }
-
-    actions
-    {
-        // Add changes to page actions here
-    }
-
-    var
-        myInt: Integer;
-}
-
 tableextension 50107 EditingLineTableOfPO extends "Purchase Line"
 {
     fields
@@ -32,10 +6,12 @@ tableextension 50107 EditingLineTableOfPO extends "Purchase Line"
         {
             DataClassification = ToBeClassified;
             TableRelation = Item."Standard Cost";
+            ObsoleteState = Pending;
         }
         field(50109; BuyPrice; Decimal)
         {
             Caption = 'Buy Price';
+            ObsoleteState = Pending;
         }
     }
 

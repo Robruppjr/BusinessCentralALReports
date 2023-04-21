@@ -73,7 +73,8 @@
                                     <TextRun>
                                       <Value>=Fields!itemName.Value</Value>
                                       <Style>
-                                        <FontSize>14pt</FontSize>
+                                        <FontSize>16pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
