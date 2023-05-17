@@ -35,6 +35,12 @@ tableextension 50103 MyExtension extends Item
             DataClassification = ToBeClassified;
             TableRelation = "Item Category"."Parent Category";
         }
+        field(50112; ItemClass; Enum ItemClass)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Item Class';
+            NotBlank = true;
+        }
     }
     var
         myInt: Integer;
