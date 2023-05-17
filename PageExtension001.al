@@ -17,10 +17,11 @@ pageextension 50103 MyExtension extends "Item Card"
             {
                 ApplicationArea = All;
             }
-            field(ItemClass; ItemClass)
+            field(ItemClass; Rec.ItemClass)
             {
                 Caption = 'Class';
                 ApplicationArea = All;
+                NotBlank = true;
             }
 
         }
@@ -63,6 +64,10 @@ pageextension 50103 MyExtension extends "Item Card"
          end;
 
      end;*/
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        Rec.TestField(ItemClass);
+    end;
 
     var
         myInt: Integer;
@@ -92,6 +97,11 @@ pageextension 50104 MyExtension01 extends "Item List"
             field(ItemCategoryCode; Rec."Item Category Code")
             {
                 ApplicationArea = All;
+            }
+            field(ItemClass; Rec.ItemClass)
+            {
+                ApplicationArea = All;
+                NotBlank = true;
             }
         }
     }
