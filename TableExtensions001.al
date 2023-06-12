@@ -13,6 +13,7 @@ tableextension 50103 MyExtension extends Item
         }
         field(50106; LegacyId; Text[50])
         {
+            Caption = 'Sellbrite Sku';
             DataClassification = ToBeClassified;
         }
         field(50108; Recycle; Boolean)

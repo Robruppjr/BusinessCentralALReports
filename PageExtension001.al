@@ -33,6 +33,8 @@ pageextension 50103 MyExtension extends "Item Card"
                 ToolTip = 'Parent Category';
                 ApplicationArea = All;
                 Editable = false;
+                TableRelation = "Item Category"."Parent Category";
+                ObsoleteState = Pending;
             }
         }
         addafter(VariantMandatoryDefaultNo)
@@ -64,11 +66,6 @@ pageextension 50103 MyExtension extends "Item Card"
          end;
 
      end;*/
-    trigger OnQueryClosePage(CloseAction: Action): Boolean
-    begin
-        Rec.TestField(ItemClass);
-    end;
-
     var
         myInt: Integer;
         ItemClass: Enum ItemClass;
@@ -94,9 +91,11 @@ pageextension 50104 MyExtension01 extends "Item List"
             {
                 ApplicationArea = All;
             }
-            field(ItemCategoryCode; Rec."Item Category Code")
+            field("Item Category";Rec."Parent Category")
             {
-                ApplicationArea = All;
+                ApplicationArea = Basic, Suite;
+                Caption = 'Item Parent Category';
+                TableRelation = "Item Category"."Parent Category";
             }
             field(ItemClass; Rec.ItemClass)
             {
@@ -115,4 +114,63 @@ pageextension 50104 MyExtension01 extends "Item List"
     var
         myInt: Integer;
 
+}
+
+pageextension 50105 AssemblyExtension extends "Assembly Order Subform"
+{
+    layout
+    {
+        addafter("No.")
+        {
+            field("Item Category";Rec."Item Category")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Item Category';
+                TableRelation = "Item Category"."Parent Category";
+            }
+        }
+    }
+}
+
+pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
+{
+
+    layout
+    {
+        addafter("Description")
+        {
+            field("Amount"; Rec.Amount)
+            {
+                ApplicationArea = All;
+                TableRelation = "Sales Header".Amount;
+            }
+            field("Customer Name"; Rec."Customer Name")
+            {
+                ApplicationArea = All;
+                TableRelation = "Sales Header"."Bill-to Name";
+            }
+        }
+    }
+    actions
+    {
+
+    }
+}
+
+pageextension 50107 ExtendingPurchaseInvoice extends "Purchase Quotes"
+{
+    layout
+    {
+        addafter("No.")
+        {
+            field("Vendor Shipment No.";Rec."Vendor Shipment No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Vendor Order No.";Rec."Vendor Order No.")
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
 }

@@ -1,0 +1,1 @@
+const companyId = window.app.companyId;
