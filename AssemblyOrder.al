@@ -17,6 +17,8 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
             {}
             column(Customer_Name; "Customer Name")
             {}
+            column(External_Document_No_;"External Document No.")
+            {}
         }
     }
     var

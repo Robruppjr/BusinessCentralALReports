@@ -25,28 +25,27 @@ pageextension 50103 MyExtension extends "Item Card"
             }
 
         }
-        addafter(GTIN)
-        {
-            field(ParentCode; ParentCode)
-            {
-                Caption = 'Parent Category';
-                ToolTip = 'Parent Category';
-                ApplicationArea = All;
-                Editable = false;
-                TableRelation = "Item Category"."Parent Category";
-                ObsoleteState = Pending;
-            }
-        }
         addafter(VariantMandatoryDefaultNo)
         {
-            field(Recycle; Rec.Recycle)
-            {
-                ApplicationArea = All;
-                ObsoleteState = Pending;
-            }
+
             field(Sellbrite; Rec.Sellbrite)
             {
                 ApplicationArea = All;
+            }
+        }
+        addafter("Standard Cost")
+        {
+            field(CostUpdated;Rec.CostUpdated)
+            {
+                ApplicationArea = all;
+            }
+        }
+        addafter("Shelf No.")
+        {
+            field(BinLocation01;Rec.BinLocation01)
+            {
+                ApplicationArea = all;
+                Editable = false;
             }
         }
     }
@@ -54,6 +53,16 @@ pageextension 50103 MyExtension extends "Item Card"
     actions
     {
         // Add changes to page actions here
+        addafter("Item/Vendor Catalog")
+        {
+            action("Inventory Evaluation")
+            {
+                Caption = 'Inventory Evaluation';
+                ApplicationArea = All;
+                Image = ExecuteBatch;
+                RunObject = report "Inventory Valuation";
+            }
+        }
     }
     /* trigger OnAfterGetRecord()
      var
@@ -149,6 +158,11 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 ApplicationArea = All;
                 TableRelation = "Sales Header"."Bill-to Name";
             }
+            field("External Document No."; Rec."External Document No.")
+            {
+                ApplicationArea = All;
+                TableRelation = "Sales Header"."External Document No.";
+            }
         }
     }
     actions
@@ -174,3 +188,49 @@ pageextension 50107 ExtendingPurchaseInvoice extends "Purchase Quotes"
         }
     }
 }
+pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
+{
+    layout
+    {
+        addafter("No.")
+        {
+            field("External Document No.";Rec."External Document No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Customer Name";Rec."Customer Name")
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
+}
+
+pageextension 50109 ExtendCustomerHeader extends "Customer Card"
+{
+    layout
+    {
+        addafter(Name)
+        {
+            field(CompanyName;Rec.CompanyName)
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
+}
+
+/*pageextension 50110 ExtendingSalesHeader extends "Sales Order"
+{
+    layout
+    {
+        addafter("Sell-to Customer Name")
+        {
+            field(CompanyName; Rec.CompanyName)
+            {
+                ApplicationArea = All;
+                TableRelation = Customer.CompanyName'
+            }
+        }
+    }
+}*/
