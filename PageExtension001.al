@@ -62,7 +62,15 @@ pageextension 50103 MyExtension extends "Item Card"
                 Image = ExecuteBatch;
                 RunObject = report "Inventory Valuation";
             }
+            action("Print Label")
+            {
+                ApplicationArea = All;
+                Image = Print;
+                RunObject = report "MPN 4x2 Label";
+                
+            }
         }
+        
     }
     /* trigger OnAfterGetRecord()
      var
@@ -91,6 +99,11 @@ pageextension 50104 MyExtension01 extends "Item List"
             field(LegacyId; Rec.LegacyId)
             {
                 ApplicationArea = All;
+            }
+            field(BinLocation01;Rec.BinLocation01)
+            {
+                ApplicationArea = all;
+                Editable = false;
             }
             field(MPN; Rec.MPN)
             {
