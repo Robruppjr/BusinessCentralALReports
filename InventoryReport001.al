@@ -18,6 +18,10 @@ reportextension 50107 "InvnetoryReport001" extends "Inventory Valuation"
             column(Standard_Cost; "Standard Cost")
             {
             }
+            column(LegacyId;LegacyId)
+            {
+                
+            }
 
         }
     }

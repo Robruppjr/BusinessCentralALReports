@@ -26,4 +26,8 @@ enum 50100 ItemClass
     {
         Caption = 'Recycle';
     }
+    value(6; Virtual)
+    {
+        Caption = 'Virtual';
+    }
 }
