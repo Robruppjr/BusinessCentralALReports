@@ -2954,6 +2954,9 @@ End Function
         <Field Name="Standard_CostFormat">
           <DataField>Standard_CostFormat</DataField>
         </Field>
+        <Field Name="LegacyId">
+          <DataField>LegacyId</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

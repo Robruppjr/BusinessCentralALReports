@@ -13,6 +13,7 @@ tableextension 50103 MyExtension extends Item
         }
         field(50106; LegacyId; Text[50])
         {
+            Caption = 'Sellbrite Sku';
             DataClassification = ToBeClassified;
         }
         field(50108; Recycle; Boolean)
@@ -41,8 +42,40 @@ tableextension 50103 MyExtension extends Item
             Caption = 'Item Class';
             NotBlank = true;
         }
+        field(50113; CostUpdated; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cost Updated';
+        }
+        field(50114; BinLocation; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Remove From View';
+            TableRelation = "Bin Content"."Bin Code";
+            ObsoleteState =Removed;
+            //CalcFormula = lookup ("Bin Content"."Item No." where ("Item No." = field ("No.")));
+        }
+        field(50115; BinLocation01; Code[20])
+        {
+            Caption = 'Bin Location';
+            TableRelation = "Bin Content"."Bin Code";
+            FieldClass =FlowField;
+            CalcFormula = lookup ("Bin Content"."Bin Code" where ("Item No." = field ("No.")));
+        }
     }
     var
         myInt: Integer;
 
+}
+
+tableextension 50104 CustomerExtension extends Customer
+{
+    fields
+    {
+        field(50114; CompanyName; Text[100])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Company Name';
+        }
+    }
 }
