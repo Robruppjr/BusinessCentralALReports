@@ -8,128 +8,15 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>4036214a-e48d-4412-8f44-aed7a41f53e7</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
     <ReportSection>
       <Body>
-        <ReportItems>
-          <Tablix Name="Tablix2">
-            <TablixBody>
-              <TablixColumns>
-                <TablixColumn>
-                  <Width>3.99875in</Width>
-                </TablixColumn>
-              </TablixColumns>
-              <TablixRows>
-                <TablixRow>
-                  <Height>2in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Rectangle Name="Rectangle1">
-                          <ReportItems>
-                            <Rectangle Name="Rectangle2">
-                              <ReportItems>
-                                <Textbox Name="Model">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>=Fields!Model.Value</Value>
-                                          <Style>
-                                            <FontFamily>Arial Black</FontFamily>
-                                            <FontSize>28pt</FontSize>
-                                            <FontWeight>Bold</FontWeight>
-                                            <TextDecoration>None</TextDecoration>
-                                          </Style>
-                                        </TextRun>
-                                        <TextRun>
-                                          <Value xml:space="preserve">  </Value>
-                                          <Style>
-                                            <FontFamily>Arial Black</FontFamily>
-                                            <FontSize>28pt</FontSize>
-                                            <FontWeight>Bold</FontWeight>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style>
-                                        <TextAlign>Center</TextAlign>
-                                      </Style>
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Model</rd:DefaultName>
-                                  <Top>0.13542in</Top>
-                                  <Left>0.14583in</Left>
-                                  <Height>1.40833in</Height>
-                                  <Width>3.09717in</Width>
-                                  <Style>
-                                    <Border />
-                                    <VerticalAlign>Middle</VerticalAlign>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </ReportItems>
-                              <KeepTogether>true</KeepTogether>
-                              <Top>0.16042in</Top>
-                              <Left>0.30784in</Left>
-                              <Height>1.67916in</Height>
-                              <Width>3.37842in</Width>
-                              <Style>
-                                <Border>
-                                  <Style>Solid</Style>
-                                  <Width>3.5pt</Width>
-                                </Border>
-                              </Style>
-                            </Rectangle>
-                          </ReportItems>
-                          <KeepTogether>true</KeepTogether>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                          </Style>
-                        </Rectangle>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-              </TablixRows>
-            </TablixBody>
-            <TablixColumnHierarchy>
-              <TablixMembers>
-                <TablixMember />
-              </TablixMembers>
-            </TablixColumnHierarchy>
-            <TablixRowHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="Details" />
-                </TablixMember>
-              </TablixMembers>
-            </TablixRowHierarchy>
-            <KeepTogether>true</KeepTogether>
-            <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.00366in</Top>
-            <Height>2in</Height>
-            <Width>3.99875in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Tablix>
-        </ReportItems>
-        <Height>2.00366in</Height>
+        <Height>2in</Height>
         <Style />
       </Body>
-      <Width>3.99875in</Width>
+      <Width>6.5in</Width>
       <Page>
         <Style />
       </Page>
