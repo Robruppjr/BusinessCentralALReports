@@ -27,6 +27,7 @@ pageextension 50113 SalesPageExt extends "Sales Order Subform"
         ProfitLCY: Decimal;
         AmountLCY: Decimal;
         CostLCY: Decimal;
+        Qty: Integer;
         TotalSalesLine3: Record "Sales Line";
 
     local procedure CalcProfitLCY(): Decimal
@@ -34,6 +35,7 @@ pageextension 50113 SalesPageExt extends "Sales Order Subform"
         AmountLCY := 0;
         CostLCY := 0;
         ProfitLCY := 0;
+        Qty := 0;
         TotalSalesLine3.SetRange("Document Type", Rec."Document Type");
         TotalSalesLine3.SetRange("Document No.", Rec."Document No.");
 
@@ -41,9 +43,10 @@ pageextension 50113 SalesPageExt extends "Sales Order Subform"
             repeat
                 AmountLCY := AmountLCY + TotalSalesLine3.Amount;
                 CostLCY := CostLCY + TotalSalesLine3."Unit Cost";
+                Qty := Qty + TotalSalesLine3.Quantity;
             until 0 = TotalSalesLine3.Next()
         end;
-        ProfitLCY := AmountLCY - CostLCY;
+        ProfitLCY := AmountLCY - (CostLCY * Qty);
         exit(ProfitLCY);
     end;
 }
