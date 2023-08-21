@@ -50,3 +50,13 @@ pageextension 50113 SalesPageExt extends "Sales Order Subform"
         exit(ProfitLCY);
     end;
 }
+
+pageextension 50114 SalesHeaderExt extends "Sales Order"
+{
+    layout
+    {
+        moveafter("External Document No."; "Location Code")
+        moveafter("External Document No."; "Shortcut Dimension 1 Code")
+
+    }
+}
