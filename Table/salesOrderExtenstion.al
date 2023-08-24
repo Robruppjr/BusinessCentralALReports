@@ -101,6 +101,12 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         {
             ObsoleteState = Pending;
         }
+        field(50126; "State"; Code[20])
+        {
+            Caption = 'Order State';
+            TableRelation = "Order State";
+            ValidateTableRelation = false;
+        }
     }
 }
 

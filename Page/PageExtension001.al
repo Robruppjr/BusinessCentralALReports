@@ -35,14 +35,14 @@ pageextension 50103 MyExtension extends "Item Card"
         }
         addafter("Standard Cost")
         {
-            field(CostUpdated;Rec.CostUpdated)
+            field(CostUpdated; Rec.CostUpdated)
             {
                 ApplicationArea = all;
             }
         }
         addafter("Shelf No.")
         {
-            field(BinLocation01;Rec.BinLocation01)
+            field(BinLocation01; Rec.BinLocation01)
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -67,10 +67,10 @@ pageextension 50103 MyExtension extends "Item Card"
                 ApplicationArea = All;
                 Image = Print;
                 RunObject = report "MPN 4x2 Label";
-                
+
             }
         }
-        
+
     }
     /* trigger OnAfterGetRecord()
      var
@@ -100,7 +100,7 @@ pageextension 50104 MyExtension01 extends "Item List"
             {
                 ApplicationArea = All;
             }
-            field(BinLocation01;Rec.BinLocation01)
+            field(BinLocation01; Rec.BinLocation01)
             {
                 ApplicationArea = all;
                 Editable = false;
@@ -113,7 +113,7 @@ pageextension 50104 MyExtension01 extends "Item List"
             {
                 ApplicationArea = All;
             }
-            field("Item Category";Rec."Parent Category")
+            field("Item Category"; Rec."Parent Category")
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Item Parent Category';
@@ -144,7 +144,7 @@ pageextension 50105 AssemblyExtension extends "Assembly Order Subform"
     {
         addafter("No.")
         {
-            field("Item Category";Rec."Item Category")
+            field("Item Category"; Rec."Item Category")
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Item Category';
@@ -177,6 +177,13 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 TableRelation = "Sales Header"."External Document No.";
             }
         }
+        addafter(Status)
+        {
+            field(State; Rec.State)
+            {
+                ApplicationArea = All;
+            }
+        }
     }
     actions
     {
@@ -190,11 +197,11 @@ pageextension 50107 ExtendingPurchaseInvoice extends "Purchase Quotes"
     {
         addafter("No.")
         {
-            field("Vendor Shipment No.";Rec."Vendor Shipment No.")
+            field("Vendor Shipment No."; Rec."Vendor Shipment No.")
             {
                 ApplicationArea = all;
             }
-            field("Vendor Order No.";Rec."Vendor Order No.")
+            field("Vendor Order No."; Rec."Vendor Order No.")
             {
                 ApplicationArea = all;
             }
@@ -207,11 +214,15 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
     {
         addafter("No.")
         {
-            field("External Document No.";Rec."External Document No.")
+            field(State; Rec.State)
             {
                 ApplicationArea = all;
             }
-            field("Customer Name";Rec."Customer Name")
+            field("External Document No."; Rec."External Document No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Customer Name"; Rec."Customer Name")
             {
                 ApplicationArea = all;
             }
@@ -225,7 +236,7 @@ pageextension 50109 ExtendCustomerHeader extends "Customer Card"
     {
         addafter(Name)
         {
-            field(CompanyName;Rec.CompanyName)
+            field(CompanyName; Rec.CompanyName)
             {
                 ApplicationArea = all;
             }
