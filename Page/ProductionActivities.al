@@ -1,6 +1,6 @@
 page 50105 "Production Activities"
 {
-    Caption = 'Activities';
+    Caption = 'Production Activities';
     PageType = CardPart;
     RefreshOnActivate = true;
     SourceTable = "Production Cue";
@@ -21,6 +21,18 @@ page 50105 "Production Activities"
                 field("On Deck - Today"; Rec."On Deck - Today")
                 {
                     ApplicationArea = All;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field(Priority; Rec.Priority)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("All Orders"; Rec."All Orders")
+                {
+                    ApplicationArea = all;
                     DrillDown = true;
                     DrillDownPageId = "Assembly Orders";
                 }

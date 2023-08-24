@@ -1,6 +1,6 @@
 page 50106 "Warehouse Picks State"
 {
-    Caption = 'Activities';
+    Caption = 'Inventory Pick Activities';
     PageType = CardPart;
     RefreshOnActivate = true;
     SourceTable = "Warehouse State Cue";
@@ -12,7 +12,25 @@ page 50106 "Warehouse Picks State"
             cuegroup("Pick States")
             {
                 Caption = 'Pick States';
+                field(Start; Rec.Start)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Warehouse Picks";
+                }
                 field(WFP; Rec.WFP)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Warehouse Picks";
+                }
+                field("End"; Rec."End")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Warehouse Picks";
+                }
+                field("All Picks"; Rec."All Picks")
                 {
                     ApplicationArea = all;
                     DrillDown = true;

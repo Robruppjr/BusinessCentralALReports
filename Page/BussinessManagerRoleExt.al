@@ -8,6 +8,10 @@ pageextension 50201 "Bussiness Manager Role Ext" extends "Business Manager Role 
             {
                 ApplicationArea = all;
             }
+            part("Production Activities"; "Production Activities")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

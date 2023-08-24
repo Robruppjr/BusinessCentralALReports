@@ -31,6 +31,25 @@ table 50104 "Production Cue"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(5; "Priority"; Integer)
+        {
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where(State = filter('TECHONDECK'),
+                                                        "Creation Date" = filter('<T')));
+
+            Caption = 'On Deck - Priority';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(6; "All Orders"; Integer)
+        {
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header");
+
+            Caption = 'All Orders';
+            Editable = false;
+            FieldClass = FlowField;
+        }
 
         field(50; "Date Filter"; Date)
         {

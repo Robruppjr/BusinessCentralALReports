@@ -8,6 +8,7 @@ pageextension 50203 "Purchasing Agent Role Ext" extends "Purchasing Agent Role C
             {
                 ApplicationArea = all;
             }
+
         }
     }
 }
