@@ -107,6 +107,12 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             TableRelation = "Order State";
             ValidateTableRelation = false;
         }
+        field(50127; Technician; Code[20])
+        {
+            Caption = 'Technician';
+            TableRelation = Technician;
+            ValidateTableRelation = false;
+        }
     }
 }
 

@@ -183,6 +183,10 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             {
                 ApplicationArea = All;
             }
+            field(Technician; Rec.Technician)
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
