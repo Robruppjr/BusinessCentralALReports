@@ -187,12 +187,40 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             {
                 ApplicationArea = all;
             }
+            field("Order Count"; Rec."Order Count")
+            {
+                Caption = 'Sales Order Number';
+                ApplicationArea = all;
+            }
+            field(GetSOCount; GetSOCount)
+            {
+                Caption = 'SO Count';
+                ApplicationArea = all;
+            }
         }
+
     }
     actions
     {
 
     }
+    local procedure GetSOCount(): Integer;
+    var
+        orderLink: Record "Assemble-to-Order Link";
+        counter: Integer;
+    begin
+        Rec.CalcFields("Order Count");
+        counter := 0;
+        orderLink.SetCurrentKey("Document Type", "Document No.");
+        orderLink.SetRange("Document Type", orderLink."Document Type"::Order);
+        orderLink.SetRange("Document No.", Rec."Order Count");
+        if orderLink.FindSet() then begin
+            repeat
+                counter := counter + 1;
+            until 0 = orderLink.Next();
+        end;
+        exit(counter);
+    end;
 }
 
 pageextension 50107 ExtendingPurchaseInvoice extends "Purchase Quotes"

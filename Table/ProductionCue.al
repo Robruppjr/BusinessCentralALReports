@@ -12,7 +12,7 @@ table 50104 "Production Cue"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where(State = filter('TECHONDECK'),
-                                                        "Creation Date" = field("Date Filter")));
+                                                        "Creation Date" = filter('T')));
             Caption = 'On Deck for Today';
             Editable = false;
             FieldClass = FlowField;
@@ -26,7 +26,7 @@ table 50104 "Production Cue"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where(State = filter('New Order'),
-                                                        "Creation Date" = field("Date Filter")));
+                                                        "Creation Date" = filter('T')));
             Caption = 'New Order for Today';
             Editable = false;
             FieldClass = FlowField;
