@@ -1,6 +1,6 @@
 page 50106 "Warehouse Picks State"
 {
-    Caption = 'Inventory Pick Activities';
+    Caption = 'Pick Activities';
     PageType = CardPart;
     RefreshOnActivate = true;
     SourceTable = "Warehouse State Cue";

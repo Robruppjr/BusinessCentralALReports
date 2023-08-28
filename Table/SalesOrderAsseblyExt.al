@@ -96,11 +96,25 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             Caption = 'Order State';
             TableRelation = "Order State";
             ValidateTableRelation = false;
+            ObsoleteState = Pending;
+        }
+        field(50130; "State Desc"; Text[200])
+        {
+            Caption = 'Order State';
+            TableRelation = "Order State".Description;
+            ValidateTableRelation = false;
         }
         field(50127; Technician; Code[20])
         {
             Caption = 'Technician';
             TableRelation = Technician;
+            ValidateTableRelation = false;
+            ObsoleteState = Removed;
+        }
+        field(50129; "Tech Name"; Text[100])
+        {
+            Caption = 'Tech Name';
+            TableRelation = Technician.Description;
             ValidateTableRelation = false;
         }
         field(50128; "Order Count"; code[20])

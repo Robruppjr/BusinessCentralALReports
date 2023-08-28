@@ -4,11 +4,29 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
     {
         addafter("Sorting Method")
         {
-            field(State; Rec.State)
+            field("State Desc"; Rec."State Desc")
             {
-                ApplicationArea = All;
-                Importance = Standard;
-                Visible = true;
+                ApplicationArea = all;
+            }
+            field(Technician; Rec.Technician)
+            {
+                ApplicationArea = all;
+                trigger OnValidate()
+                var
+                    AssemblyOrder: Record "Assembly Header";
+                    WarehouseOrder: Record "Warehouse Activity Header";
+                    TechName: Text;
+                begin
+                    if WarehouseOrder.Get(Rec.Type, Rec.Technician, 10000) then begin
+                        TechName := WarehouseOrder.Technician;
+                    end;
+                    AssemblyOrder.SetCurrentKey("Document Type", "Tech Name");
+                    AssemblyOrder.SetRange("Document Type", AssemblyOrder."Document Type");
+                    AssemblyOrder.SetFilter("Tech Name", TechName);
+                    if AssemblyOrder.Find('-') then begin
+                        AssemblyOrder.SetRecFilter();
+                    end;
+                end;
             }
         }
     }
@@ -55,7 +73,7 @@ pageextension 50111 "Wh Pick List Ext" extends "Warehouse Picks"
     {
         addafter("No.")
         {
-            field(State; Rec.State)
+            field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = all;
             }

@@ -193,11 +193,11 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
         }
         addafter(Status)
         {
-            field(State; Rec.State)
+            field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = All;
             }
-            field(Technician; Rec.Technician)
+            field("Tech Name"; Rec."Tech Name")
             {
                 ApplicationArea = all;
             }
@@ -260,7 +260,7 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
     {
         addafter("No.")
         {
-            field(State; Rec.State)
+            field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = all;
             }

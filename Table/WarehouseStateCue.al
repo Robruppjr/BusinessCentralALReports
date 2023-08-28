@@ -11,7 +11,7 @@ table 50105 "Warehouse State Cue"
         field(2; WFP; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where(State = filter('WFP')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('WFP')));
             Caption = 'WAITING FOR PARTS';
             Editable = false;
             FieldClass = FlowField;
@@ -19,7 +19,7 @@ table 50105 "Warehouse State Cue"
         field(3; Start; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where(State = filter('START')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('START')));
             Caption = 'Pick Started';
             Editable = false;
             FieldClass = FlowField;
@@ -35,7 +35,7 @@ table 50105 "Warehouse State Cue"
         field(5; "All Picks"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where(State = filter('START' | 'WFP' | '')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('START' | 'WFP' | '')));
             Caption = 'All Active Picks';
             Editable = false;
             FieldClass = FlowField;
@@ -43,7 +43,7 @@ table 50105 "Warehouse State Cue"
         field(6; "New Order"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where(State = filter('')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('')));
             Caption = 'NEW ORDER';
             Editable = false;
             FieldClass = FlowField;

@@ -8,10 +8,11 @@ pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Ce
             {
                 ApplicationArea = All;
             }
-            part("Warehouse Picks State"; "Warehouse Picks State")
+            part("Technician Cues"; "Technician Cues")
             {
                 ApplicationArea = all;
             }
+
         }
     }
 }
