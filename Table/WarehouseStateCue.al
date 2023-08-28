@@ -12,7 +12,7 @@ table 50105 "Warehouse State Cue"
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
             CalcFormula = count("Warehouse Activity Header" where(State = filter('WFP')));
-            Caption = 'Waiting for Parts';
+            Caption = 'WAITING FOR PARTS';
             Editable = false;
             FieldClass = FlowField;
         }
@@ -20,23 +20,31 @@ table 50105 "Warehouse State Cue"
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
             CalcFormula = count("Warehouse Activity Header" where(State = filter('START')));
-            Caption = 'Start Picking Parts';
+            Caption = 'Pick Started';
             Editable = false;
             FieldClass = FlowField;
         }
         field(4; "End"; Integer)
         {
-            AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where(State = filter('END')));
-            Caption = 'Parts have been picked';
+            AccessByPermission = tabledata "Registered Whse. Activity Hdr." = R;
+            CalcFormula = count("Registered Whse. Activity Hdr." where("Registering Date" = filter('>1M')));
+            Caption = 'Completed Picks';
             Editable = false;
             FieldClass = FlowField;
         }
         field(5; "All Picks"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header");
-            Caption = 'All Pick Sheets';
+            CalcFormula = count("Warehouse Activity Header" where(State = filter('START' | 'WFP' | '')));
+            Caption = 'All Active Picks';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(6; "New Order"; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where(State = filter('')));
+            Caption = 'NEW ORDER';
             Editable = false;
             FieldClass = FlowField;
         }

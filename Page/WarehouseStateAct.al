@@ -12,6 +12,12 @@ page 50106 "Warehouse Picks State"
             cuegroup("Pick States")
             {
                 Caption = 'Pick States';
+                field("New Order"; Rec."New Order")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Warehouse Picks";
+                }
                 field(Start; Rec.Start)
                 {
                     ApplicationArea = all;
@@ -24,17 +30,17 @@ page 50106 "Warehouse Picks State"
                     DrillDown = true;
                     DrillDownPageId = "Warehouse Picks";
                 }
-                field("End"; Rec."End")
-                {
-                    ApplicationArea = all;
-                    DrillDown = true;
-                    DrillDownPageId = "Warehouse Picks";
-                }
                 field("All Picks"; Rec."All Picks")
                 {
                     ApplicationArea = all;
                     DrillDown = true;
                     DrillDownPageId = "Warehouse Picks";
+                }
+                field("End"; Rec."End")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Registered Whse. Picks";
                 }
             }
         }
