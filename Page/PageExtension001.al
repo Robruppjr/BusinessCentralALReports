@@ -163,18 +163,32 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
         {
             field("Amount"; Rec.Amount)
             {
-                ApplicationArea = All;
-                TableRelation = "Sales Header".Amount;
+                /*Caption = 'Sales Order Amount';
+                trigger OnValidate()
+                var
+                    SalesOrder: Record "Sales Header";
+                    AssemblyOrder: Record "Assembly Header";
+                    AmountNo: Decimal;
+                begin
+                    if AssemblyOrder.Get(Rec."Document Type", Rec."No.", 10000) then begin
+                        AmountNo := AssemblyOrder.Amount;
+                    end;
+                    SalesOrder.SetCurrentKey("Document Type", "No.");
+                    SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
+                    AssemblyOrder.SetFilter(Amount, AmountNo);
+                    if SalesOrder.Find('-') then begin
+                        SalesOrder.SetRecFilter();
+
+                    end;
+                end;*/
             }
             field("Customer Name"; Rec."Customer Name")
             {
-                ApplicationArea = All;
-                TableRelation = "Sales Header"."Bill-to Name";
+
             }
             field("External Document No."; Rec."External Document No.")
             {
-                ApplicationArea = All;
-                TableRelation = "Sales Header"."External Document No.";
+
             }
         }
         addafter(Status)

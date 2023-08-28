@@ -2,11 +2,15 @@ pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Ce
 {
     layout
     {
-        addbefore("User Tasks Activities")
+        addfirst(rolecenter)
         {
             part("Production Activites"; "Production Activities")
             {
                 ApplicationArea = All;
+            }
+            part("Warehouse Picks State"; "Warehouse Picks State")
+            {
+                ApplicationArea = all;
             }
         }
     }

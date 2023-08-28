@@ -2,13 +2,16 @@ pageextension 50203 "Purchasing Agent Role Ext" extends "Purchasing Agent Role C
 {
     layout
     {
-        addbefore(Control1907662708)
+        addfirst(rolecenter)
         {
-            part("Warehouse Pick State"; "Warehouse Picks State")
+            part("Production Activites"; "Production Activities")
+            {
+                ApplicationArea = All;
+            }
+            part("Warehouse Picks State"; "Warehouse Picks State")
             {
                 ApplicationArea = all;
             }
-
         }
     }
 }

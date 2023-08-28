@@ -57,6 +57,11 @@ pageextension 50114 SalesHeaderExt extends "Sales Order"
     {
         moveafter("External Document No."; "Location Code")
         moveafter("External Document No."; "Shortcut Dimension 1 Code")
-
+        moveafter("External Document No."; "Salesperson Code")
+        modify("Salesperson Code")
+        {
+            Importance = Promoted;
+        }
     }
+
 }

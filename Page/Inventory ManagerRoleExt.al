@@ -2,7 +2,7 @@ pageextension 50202 "Inventory Manager Role Ext" extends "Whse. Basic Role Cente
 {
     layout
     {
-        addbefore("WMS Ship and Receive Activities")
+        addfirst(rolecenter)
         {
             part("Production Activites"; "Production Activities")
             {

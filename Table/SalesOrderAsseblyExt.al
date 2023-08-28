@@ -60,38 +60,28 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50121; "Amount"; Decimal)
         {
             TableRelation = "Sales Header".Amount where("Amount" = field(Amount));
-            ValidateTableRelation = false;
-            trigger OnValidate();
-            var
-                SalesOrder: Record "Sales Header";
+            trigger OnValidate()
             begin
-                if SalesOrder.Get(SalesOrder."Document Type", SalesOrder."No.") then
-                    "Amount" := SalesOrder.Amount;
+                SetCurrentFieldNum(FieldNo(Amount));
+                if Amount <> 0 then begin
+                    Amount := SalesHeader.Amount;
+                end;
             end;
         }
         field(50122; "Customer Name"; Text[100])
         {
-            TableRelation = "Sales Header"."Bill-to Name";
-            ValidateTableRelation = false;
-            trigger OnValidate();
-            var
-                SalesHeader: Record "Sales Header";
+            TableRelation = "Sales Header" where("Sell-to Customer Name" = field("Customer Name"));
+            trigger OnValidate()
             begin
-                if SalesHeader.Get(SalesHeader."Document Type", SalesHeader."No.") then
-                    "Customer Name" := SalesHeader."Bill-to Name";
+                SetCurrentFieldValue(FieldName("Customer Name"));
+                if "Customer Name" <> '' then begin
+                    "Customer Name" := SalesHeader."Sell-to Customer Name";
+                end;
             end;
         }
         field(50125; "External Document No."; Code[35])
         {
-            TableRelation = "Sales Header"."External Document No.";
-            ValidateTableRelation = false;
-            trigger OnValidate();
-            var
-                SalesHeader: Record "Sales Header";
-            begin
-                if SalesHeader.Get(SalesHeader."Document Type", SalesHeader."External Document No.") then
-                    "External Document No." := SalesHeader."External Document No.";
-            end;
+
         }
         field(50123; "Item Category"; Code[20])
         {
@@ -120,13 +110,28 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
                                                                                 "Assembly Document No." = field("No.")));
         }
     }
+
+    local procedure SetCurrentFieldNum(NewCurrentFieldNum: Integer): Boolean
+    begin
+        if CurrentFieldNum = 0 then begin
+            CurrentFieldNum := NewCurrentFieldNum;
+            exit(true);
+        end;
+        exit(false);
+    end;
+
+    local procedure SetCurrentFieldValue(NewCurrentFieldValue: Text): Boolean
+    begin
+        if CurrentFieldValue = '' then begin
+            CurrentFieldValue := NewCurrentFieldValue;
+            exit(true);
+        end;
+        exit(false);
+    end;
+
+    var
+        AssemblyHeader: Record "Assembly Header";
+        SalesHeader: Record "Sales Header";
+        CurrentFieldNum: Integer;
+        CurrentFieldValue: Text;
 }
-
-/*tableextension 50111 SalesHeaderSalesPerson extends "Sales Header"
-{
-    fields
-    {
-        field(50125; Sa)
-    }
-
-}*/
