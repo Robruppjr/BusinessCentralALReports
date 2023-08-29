@@ -32,7 +32,7 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
     }
     actions
     {
-        addafter("&Print")
+        addfirst("&Registering")
         {
             action("Pick Sheet Print")
             {

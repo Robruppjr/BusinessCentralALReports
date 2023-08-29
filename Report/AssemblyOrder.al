@@ -4,22 +4,7 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
 
     dataset
     {
-        add("Assembly Line")
-        {
-            column(Item_Category; "Item Category")
-            { }
-            column(Unit_Cost; "Unit Cost")
-            { }
-        }
-        add("Assembly Header")
-        {
-            column(Amount; Amount)
-            { }
-            column(Customer_Name; "Customer Name")
-            { }
-            column(External_Document_No_; "External Document No.")
-            { }
-        }
+
     }
     var
         Item: Record "Item";

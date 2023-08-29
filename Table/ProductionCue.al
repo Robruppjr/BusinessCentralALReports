@@ -11,7 +11,7 @@ table 50104 "Production Cue"
         field(2; "On Deck - Today"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where(State = filter('TECHONDECK'),
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('TECHONDECK'),
                                                         "Creation Date" = filter('T')));
             Caption = 'On Deck for Today';
             Editable = false;
@@ -25,7 +25,7 @@ table 50104 "Production Cue"
         field(4; "New Order - Today"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where(State = filter('New Order' | ''),
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('New Order' | ''),
                                                         "Creation Date" = filter('T')));
             Caption = 'New Order for Today';
             Editable = false;
@@ -34,7 +34,7 @@ table 50104 "Production Cue"
         field(5; "Priority"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where(State = filter('TECHONDECK' | '' | 'New Order'),
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('TECHONDECK' | '' | 'New Order'),
                                                         "Creation Date" = filter('<T')));
 
             Caption = 'On Deck - Priority';

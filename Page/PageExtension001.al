@@ -159,38 +159,6 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
 
     layout
     {
-        addafter("Description")
-        {
-            field("Amount"; Rec.Amount)
-            {
-                /*Caption = 'Sales Order Amount';
-                trigger OnValidate()
-                var
-                    SalesOrder: Record "Sales Header";
-                    AssemblyOrder: Record "Assembly Header";
-                    AmountNo: Decimal;
-                begin
-                    if AssemblyOrder.Get(Rec."Document Type", Rec."No.", 10000) then begin
-                        AmountNo := AssemblyOrder.Amount;
-                    end;
-                    SalesOrder.SetCurrentKey("Document Type", "No.");
-                    SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
-                    AssemblyOrder.SetFilter(Amount, AmountNo);
-                    if SalesOrder.Find('-') then begin
-                        SalesOrder.SetRecFilter();
-
-                    end;
-                end;*/
-            }
-            field("Customer Name"; Rec."Customer Name")
-            {
-
-            }
-            field("External Document No."; Rec."External Document No.")
-            {
-
-            }
-        }
         addafter(Status)
         {
             field("State Desc"; Rec."State Desc")
@@ -258,21 +226,7 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
 {
     layout
     {
-        addafter("No.")
-        {
-            field("State Desc"; Rec."State Desc")
-            {
-                ApplicationArea = all;
-            }
-            field("External Document No."; Rec."External Document No.")
-            {
-                ApplicationArea = all;
-            }
-            field("Customer Name"; Rec."Customer Name")
-            {
-                ApplicationArea = all;
-            }
-        }
+
     }
 }
 
