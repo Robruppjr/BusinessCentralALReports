@@ -46,7 +46,7 @@ table 50104 "Production Cue"
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header");
 
-            Caption = 'All Orders';
+            Caption = 'Orders Ready To Ship';
             Editable = false;
             FieldClass = FlowField;
         }
