@@ -11,6 +11,28 @@
       <rd:DataSourceID>70f07d3e-8c07-4da5-a4c5-b3a737525bf6</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="itemsNo">
+          <DataField>itemsNo</DataField>
+        </Field>
+        <Field Name="itemName">
+          <DataField>itemName</DataField>
+        </Field>
+        <Field Name="itemMPN">
+          <DataField>itemMPN</DataField>
+        </Field>
+        <Field Name="itemBarcode">
+          <DataField>itemBarcode</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -159,6 +181,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -198,26 +226,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="itemsNo">
-          <DataField>itemsNo</DataField>
-        </Field>
-        <Field Name="itemName">
-          <DataField>itemName</DataField>
-        </Field>
-        <Field Name="itemMPN">
-          <DataField>itemMPN</DataField>
-        </Field>
-        <Field Name="itemBarcode">
-          <DataField>itemBarcode</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
