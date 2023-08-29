@@ -24,41 +24,12 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.87721in</Height>
+                  <Height>0.93971in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Rectangle Name="Rectangle1">
                           <ReportItems>
-                            <Textbox Name="itemsNo">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!itemsNo.Value</Value>
-                                      <Style>
-                                        <FontWeight>Bold</FontWeight>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>itemsNo</rd:DefaultName>
-                              <Top>0.39458in</Top>
-                              <Height>0.28471in</Height>
-                              <Width>0.93751in</Width>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
                             <Textbox Name="itemName">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
@@ -68,6 +39,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemName.Value</Value>
                                       <Style>
+                                        <FontSize>14pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -76,11 +48,10 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>itemName</rd:DefaultName>
-                              <Top>0.07639in</Top>
+                              <Top>0.03473in</Top>
                               <Left>0.01389in</Left>
-                              <Height>0.29041in</Height>
+                              <Height>0.52306in</Height>
                               <Width>2.89584in</Width>
-                              <ZIndex>1</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -93,12 +64,12 @@
                               <Source>Database</Source>
                               <Value>=Fields!itemBarcode.Value</Value>
                               <MIMEType>image/bmp</MIMEType>
-                              <Sizing>FitProportional</Sizing>
-                              <Top>0.39458in</Top>
-                              <Left>1.00695in</Left>
-                              <Height>0.28471in</Height>
-                              <Width>1.02777in</Width>
-                              <ZIndex>2</ZIndex>
+                              <Sizing>Fit</Sizing>
+                              <Top>0.62723in</Top>
+                              <Left>1.14931in</Left>
+                              <Height>0.31248in</Height>
+                              <Width>1.76042in</Width>
+                              <ZIndex>1</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -114,6 +85,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemMPN.Value</Value>
                                       <Style>
+                                        <FontSize>14pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -122,11 +94,11 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>itemMPN</rd:DefaultName>
-                              <Top>0.39458in</Top>
-                              <Left>2.04861in</Left>
-                              <Height>0.28471in</Height>
-                              <Width>0.84723in</Width>
-                              <ZIndex>3</ZIndex>
+                              <Top>0.62723in</Top>
+                              <Left>0.01389in</Left>
+                              <Height>0.31248in</Height>
+                              <Width>1.06598in</Width>
+                              <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -169,7 +141,7 @@
             <PageBreak>
               <BreakLocation>End</BreakLocation>
             </PageBreak>
-            <Height>0.87721in</Height>
+            <Height>0.93971in</Height>
             <Width>2.90973in</Width>
             <Style>
               <Border>
