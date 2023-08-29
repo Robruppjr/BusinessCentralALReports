@@ -60,6 +60,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50121; "Amount"; Decimal)
         {
             TableRelation = "Sales Header".Amount where("Amount" = field(Amount));
+            ObsoleteState = Pending;
             trigger OnValidate()
             begin
                 SetCurrentFieldNum(FieldNo(Amount));
@@ -67,10 +68,12 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
                     Amount := SalesHeader.Amount;
                 end;
             end;
+
         }
         field(50122; "Customer Name"; Text[100])
         {
             TableRelation = "Sales Header" where("Sell-to Customer Name" = field("Customer Name"));
+            ObsoleteState = Pending;
             trigger OnValidate()
             begin
                 SetCurrentFieldValue(FieldName("Customer Name"));
@@ -81,15 +84,15 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         }
         field(50125; "External Document No."; Code[35])
         {
-
+            ObsoleteState = Pending;
         }
         field(50123; "Item Category"; Code[20])
         {
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
         }
         field(50124; "Unit Price"; Decimal)
         {
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
         }
         field(50126; "State"; Code[20])
         {

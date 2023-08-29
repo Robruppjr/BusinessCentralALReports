@@ -21,9 +21,6 @@ tableextension 50105 WarehousePickExt extends "Warehouse Activity Header"
         }
         field(50102; "State"; Code[20])
         {
-            Caption = 'Warehouse Pick State';
-            TableRelation = "Warehouse Pick State";
-            ValidateTableRelation = false;
             ObsoleteState = Removed;
         }
         field(50103; "State Desc"; Text[200])

@@ -2814,27 +2814,6 @@ End Function
         <Field Name="QuantityToConsume_AssemblyLineFormat">
           <DataField>QuantityToConsume_AssemblyLineFormat</DataField>
         </Field>
-        <Field Name="Item_Category">
-          <DataField>Item_Category</DataField>
-        </Field>
-        <Field Name="Unit_Cost">
-          <DataField>Unit_Cost</DataField>
-        </Field>
-        <Field Name="Unit_CostFormat">
-          <DataField>Unit_CostFormat</DataField>
-        </Field>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-        </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
-        <Field Name="Customer_Name">
-          <DataField>Customer_Name</DataField>
-        </Field>
-        <Field Name="External_Document_No_">
-          <DataField>External_Document_No_</DataField>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
