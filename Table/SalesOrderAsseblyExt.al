@@ -60,7 +60,6 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50121; "Amount"; Decimal)
         {
             TableRelation = "Sales Header".Amount where("Amount" = field(Amount));
-            ObsoleteState = Pending;
             trigger OnValidate()
             begin
                 SetCurrentFieldNum(FieldNo(Amount));
@@ -73,7 +72,6 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50122; "Customer Name"; Text[100])
         {
             TableRelation = "Sales Header" where("Sell-to Customer Name" = field("Customer Name"));
-            ObsoleteState = Pending;
             trigger OnValidate()
             begin
                 SetCurrentFieldValue(FieldName("Customer Name"));
@@ -84,7 +82,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         }
         field(50125; "External Document No."; Code[35])
         {
-            ObsoleteState = Pending;
+
         }
         field(50123; "Item Category"; Code[20])
         {
@@ -125,6 +123,32 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             FieldClass = FlowField;
             CalcFormula = lookup("Assemble-to-Order Link"."Document No." where("Assembly Document Type" = field("Document Type"),
                                                                                 "Assembly Document No." = field("No.")));
+        }
+        field(50104; "TechWorkTeir"; Text[50])
+        {
+            Caption = 'Tech Teir';
+            TableRelation = "Tech Work Teir table".Description;
+            ValidateTableRelation = false;
+            trigger OnValidate()
+            var
+                techTeir: Record "Tech Work Teir table";
+            begin
+                SetCurrentFieldValue(FieldCaption("Tech Name"));
+                if "Tech Name" <> '' then begin
+                    "Tech Teir Cost" := techTeir.Cost;
+                end;
+            end;
+        }
+        field(50106; "Tech Teir Cost"; Decimal)
+        {
+            Caption = 'Tech Teir Cost';
+            TableRelation = "Tech Work Teir table".Cost;
+            ValidateTableRelation = false;
+
+        }
+        field(50105; "Service Tag"; Text[100])
+        {
+            Caption = 'Service Tag';
         }
     }
 

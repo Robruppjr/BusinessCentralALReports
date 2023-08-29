@@ -159,6 +159,21 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
 
     layout
     {
+        addafter(Description)
+        {
+            field("Customer Name"; Rec."Customer Name")
+            {
+                ApplicationArea = all;
+            }
+            field(Amount; Rec.Amount)
+            {
+                ApplicationArea = all;
+            }
+            field("External Document No."; Rec."External Document No.")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Status)
         {
             field("State Desc"; Rec."State Desc")
@@ -166,6 +181,10 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 ApplicationArea = All;
             }
             field("Tech Name"; Rec."Tech Name")
+            {
+                ApplicationArea = all;
+            }
+            field(TechWorkTeir; Rec.TechWorkTeir)
             {
                 ApplicationArea = all;
             }
@@ -179,6 +198,20 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 Caption = 'SO Count';
                 ApplicationArea = all;
             }
+            field("Service Tag"; Rec."Service Tag")
+            {
+                Caption = 'Service Tag';
+                ApplicationArea = all;
+            }
+            field(CalcLaborCost; CalcLaborCost)
+            {
+                Caption = 'Labor Cost';
+                ApplicationArea = all;
+            }
+            field("Tech Teir Cost"; Rec."Tech Teir Cost")
+            {
+                ApplicationArea = all;
+            }
         }
 
     }
@@ -186,6 +219,21 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
     {
 
     }
+    local procedure CalcLaborCost(): Decimal;
+    var
+        laborTotalCost: Decimal;
+        qty: Decimal;
+        techCost: Decimal;
+        AssemblyHeader: Record "Assembly Header";
+    begin
+        qty := AssemblyHeader.Quantity;
+        techCost := AssemblyHeader."Tech Teir Cost";
+        //techCost := Tech Work Teir.Cost the value should be gotten from the selected Tech Teir
+        laborTotalCost := qty * techCost;
+        exit(laborTotalCost);
+    end;
+
+
     local procedure GetSOCount(): Integer;
     var
         orderLink: Record "Assemble-to-Order Link";
@@ -226,6 +274,17 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("Tech Name"; Rec."Tech Name")
+            {
+                ApplicationArea = all;
+            }
+            field(TechWorkTeir; Rec.TechWorkTeir)
+            {
+                ApplicationArea = all;
+            }
+        }
 
     }
 }

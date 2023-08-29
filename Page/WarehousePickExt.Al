@@ -11,28 +11,16 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
             field(Technician; Rec.Technician)
             {
                 ApplicationArea = all;
-                trigger OnValidate()
-                var
-                    AssemblyOrder: Record "Assembly Header";
-                    WarehouseOrder: Record "Warehouse Activity Header";
-                    TechName: Text;
-                begin
-                    if WarehouseOrder.Get(Rec.Type, Rec.Technician, 10000) then begin
-                        TechName := WarehouseOrder.Technician;
-                    end;
-                    AssemblyOrder.SetCurrentKey("Document Type", "Tech Name");
-                    AssemblyOrder.SetRange("Document Type", AssemblyOrder."Document Type");
-                    AssemblyOrder.SetFilter("Tech Name", TechName);
-                    if AssemblyOrder.Find('-') then begin
-                        AssemblyOrder.SetRecFilter();
-                    end;
-                end;
+            }
+            field(TechWorkTeir; Rec.TechWorkTeir)
+            {
+                ApplicationArea = all;
             }
         }
     }
     actions
     {
-        addbefore("F&unctions")
+        addafter("&Print")
         {
             action("Pick Sheet Print")
             {

@@ -7,7 +7,7 @@ pageextension 50112 "Regesitered Pick Ext" extends "Registered Pick"
     actions
     {
 
-        addfirst(navigation)
+        addfirst(Reporting)
         {
             action("Print Pick Sheet")
             {
