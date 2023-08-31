@@ -41,6 +41,10 @@ tableextension 50105 WarehousePickExt extends "Warehouse Activity Header"
             Caption = 'Tech Teir';
             TableRelation = "Tech Work Teir table".Description;
         }
+        field(50133; "Customer Name"; Text[100])
+        {
+            Caption = 'Customer Name';
+        }
     }
     local procedure SetCurrentFieldNum(NewCurrentFieldNum: Integer): Boolean
     begin

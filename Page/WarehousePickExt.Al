@@ -2,6 +2,13 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Sorting Method")
         {
             field(Technician; Rec.Technician)
@@ -55,7 +62,29 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
             }
         }
     }
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+        AssemblyHead: Record "Assembly Header";
+        ActivityLine: Record "Warehouse Activity Line";
+
+    begin
+        ActivityLine.SetCurrentKey("Activity Type", "Whse. Document No.", "Line No.");
+        ActivityLine.SetRange("Activity Type", Rec.Type);
+        ActivityLine.SetRange("Whse. Document No.", Rec."No.");
+        ActivityLine.SetRange("Line No.", 10000);
+        if ActivityLine.FindFirst() then begin
+            if AssemblyHead.Get(1, ActivityLine."Source No.") then begin
+                AssemblyHead.CalcFields("Order Count");
+                if SalesHead.Get(1, AssemblyHead."Order Count") then begin
+                    exit(SalesHead."Bill-to Name");
+                end else
+                    exit('oops');
+            end;
+        end;
+    end;
 }
+
 
 pagecustomization WarehousePickExtModfiry customizes "Warehouse Pick"
 {
