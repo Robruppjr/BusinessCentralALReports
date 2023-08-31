@@ -55,6 +55,14 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
     }
 }
 
+pagecustomization WarehousePickExtModfiry customizes "Warehouse Pick"
+{
+    actions
+    {
+        moveafter("Registered Picks"; "Pick Sheet Print")
+    }
+}
+
 pageextension 50111 "Wh Pick List Ext" extends "Warehouse Picks"
 {
     layout
