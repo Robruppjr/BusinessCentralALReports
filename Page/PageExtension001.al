@@ -23,6 +23,10 @@ pageextension 50103 MyExtension extends "Item Card"
                 ApplicationArea = All;
                 NotBlank = true;
             }
+            field("Tech Tier"; Rec."Tech Tier")
+            {
+                ApplicationArea = all;
+            }
 
         }
         addafter(VariantMandatoryDefaultNo)
@@ -289,6 +293,11 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
     {
         addafter("No.")
         {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+
+            }
             field("Tech Name"; Rec."Tech Name")
             {
                 ApplicationArea = all;
@@ -300,6 +309,16 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
         }
 
     }
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
+    end;
 }
 
 pageextension 50109 ExtendCustomerHeader extends "Customer Card"

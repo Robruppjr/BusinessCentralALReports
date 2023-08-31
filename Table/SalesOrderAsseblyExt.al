@@ -50,6 +50,11 @@ tableextension 50108 AssemblyExtension extends "Assembly Line"
                     "Item Category" := ItemCatgoryTable."Parent Category";
             end;
         }
+        field(50121; "Item Tech Tier"; Text[50])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Tech Tier" where("No." = field("No.")));
+        }
     }
 }
 
@@ -64,19 +69,6 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50122; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
-
-            //FieldClass = FlowField;
-            //CalcFormula = lookup("Sales Header"."Bill-to Name" where())
-            //trigger OnValidate()
-            /*begin
-                SetCurrentFieldNum(FieldNo("Order Count"));
-                if "Order Count" <> '' then begin
-                    GetSalesOrder();
-                    "Customer Name" := SalesHeader."Bill-to Name";
-                end;
-                AssemblyHeaderReserve.VerifyChange(Rec, xRec);
-                ClearCurrentFieldNum(FieldNo("Order Count"));
-            end;*/
         }
         field(50125; "External Document No."; Code[35])
         {
@@ -131,8 +123,6 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50104; "TechWorkTeir"; Text[50])
         {
             Caption = 'Tech Tier';
-            TableRelation = "Tech Work Teir table".Description;
-            ValidateTableRelation = false;
             trigger OnValidate()
             var
                 myInt: Integer;
@@ -163,6 +153,27 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             Caption = 'Service Tag';
         }
     }
+
+    trigger OnAfterModify()
+    var
+        myInt: Integer;
+    begin
+        GetTechTier();
+    end;
+
+    local procedure GetTechTier()
+    var
+        AssemblyLine: Record "Assembly Line";
+    begin
+        AssemblyLine.CalcFields("Item Tech Tier");
+        AssemblyLine.SetCurrentKey("Document Type", "Document No.", "Item Tech Tier");
+        AssemblyLine.SetRange("Document Type", Rec."Document Type");
+        AssemblyLine.SetRange("Document No.", Rec."No.");
+        AssemblyLine.SetFilter("Item Tech Tier", '<> %1', '');
+        if AssemblyLine.FindFirst() then begin
+            Rec.Validate(TechWorkTeir, AssemblyLine."Item Tech Tier");
+        end;
+    end;
 
     local procedure GetSalesOrder()
     begin

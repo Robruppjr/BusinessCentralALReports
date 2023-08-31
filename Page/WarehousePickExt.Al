@@ -69,9 +69,9 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
         ActivityLine: Record "Warehouse Activity Line";
 
     begin
-        ActivityLine.SetCurrentKey("Activity Type", "Whse. Document No.", "Line No.");
+        ActivityLine.SetCurrentKey("Activity Type", "No.", "Line No.");
         ActivityLine.SetRange("Activity Type", Rec.Type);
-        ActivityLine.SetRange("Whse. Document No.", Rec."No.");
+        ActivityLine.SetRange("No.", Rec."No.");
         ActivityLine.SetRange("Line No.", 10000);
         if ActivityLine.FindFirst() then begin
             if AssemblyHead.Get(1, ActivityLine."Source No.") then begin
@@ -79,9 +79,11 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
                 if SalesHead.Get(1, AssemblyHead."Order Count") then begin
                     exit(SalesHead."Bill-to Name");
                 end else
-                    exit('oops');
-            end;
-        end;
+                    exit('');
+            end else
+                exit('');
+        end else
+            exit('');
     end;
 }
 
@@ -100,10 +102,37 @@ pageextension 50111 "Wh Pick List Ext" extends "Warehouse Picks"
     {
         addafter("No.")
         {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+            }
             field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = all;
             }
         }
     }
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+        AssemblyHead: Record "Assembly Header";
+        ActivityLine: Record "Warehouse Activity Line";
+
+    begin
+        ActivityLine.SetCurrentKey("Activity Type", "No.", "Line No.");
+        ActivityLine.SetRange("Activity Type", Rec.Type);
+        ActivityLine.SetRange("No.", Rec."No.");
+        ActivityLine.SetRange("Line No.", 10000);
+        if ActivityLine.FindFirst() then begin
+            if AssemblyHead.Get(1, ActivityLine."Source No.") then begin
+                AssemblyHead.CalcFields("Order Count");
+                if SalesHead.Get(1, AssemblyHead."Order Count") then begin
+                    exit(SalesHead."Bill-to Name");
+                end else
+                    exit('');
+            end else
+                exit('');
+        end else
+            exit('');
+    end;
 }

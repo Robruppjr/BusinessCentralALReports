@@ -4,7 +4,7 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
 
     dataset
     {
-
+        //SO COunt field
     }
     var
         Item: Record "Item";
