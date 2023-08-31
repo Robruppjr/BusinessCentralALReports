@@ -27,6 +27,8 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
                 Caption = 'Print Pick Sheet';
                 ApplicationArea = All;
                 Image = Print;
+                PromotedCategory = Process;
+                Promoted = true;
                 //RunObject = report "Assembly Order";
 
                 trigger OnAction()

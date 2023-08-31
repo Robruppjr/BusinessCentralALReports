@@ -64,9 +64,11 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50122; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
-            TableRelation = "Sales Header";
-            trigger OnValidate()
-            begin
+
+            //FieldClass = FlowField;
+            //CalcFormula = lookup("Sales Header"."Bill-to Name" where())
+            //trigger OnValidate()
+            /*begin
                 SetCurrentFieldNum(FieldNo("Order Count"));
                 if "Order Count" <> '' then begin
                     GetSalesOrder();
@@ -74,9 +76,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
                 end;
                 AssemblyHeaderReserve.VerifyChange(Rec, xRec);
                 ClearCurrentFieldNum(FieldNo("Order Count"));
-            end;
-
-
+            end;*/
         }
         field(50125; "External Document No."; Code[35])
         {
@@ -124,18 +124,25 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         }
         field(50131; "Tech Work Code"; Code[20])
         {
-            FieldClass = FlowField;
-            CalcFormula = lookup("Tech Work Teir table".Code where(Description = field(TechWorkTeir)));
+            //not used
+            //FieldClass = FlowField;
+            //CalcFormula = lookup("Tech Work Teir table".Code where(Description = field(TechWorkTeir)));
         }
         field(50104; "TechWorkTeir"; Text[50])
         {
-            Caption = 'Tech Teir';
+            Caption = 'Tech Tier';
             TableRelation = "Tech Work Teir table".Description;
             ValidateTableRelation = false;
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Rec.CalcFields("TechTeir Cost");
+            end;
         }
         field(50106; "Tech Teir Cost"; Decimal)
         {
-            Caption = 'Tech Teir Cost';
+            Caption = 'Tech Tier Cost';
             trigger OnLookup()
             begin
                 SetCurrentFieldValue(FieldCaption("Tech Work Code"));
@@ -144,6 +151,12 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
                 end;
             end;
 
+        }
+        field(50107; "TechTeir Cost"; Decimal)
+        {
+            Caption = 'Tech Tier Cost';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Tech Work Teir table".Cost where(Description = field(TechWorkTeir)));
         }
         field(50105; "Service Tag"; Text[100])
         {

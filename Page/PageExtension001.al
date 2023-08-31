@@ -161,9 +161,10 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
     {
         addafter(Description)
         {
-            field("Customer Name"; Rec."Customer Name")
+            field("Customer Name"; GetCustName())
             {
                 ApplicationArea = all;
+
             }
             field(Amount; Rec.Amount)
             {
@@ -208,8 +209,9 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 Caption = 'Labor Cost';
                 ApplicationArea = all;
             }
-            field("Tech Teir Cost"; Rec."Tech Teir Cost")
+            field("TechTeir Cost"; Rec."TechTeir Cost")
             {
+                //Before Publish to production clean up 'Tech Tier Cost'
                 ApplicationArea = all;
             }
         }
@@ -224,10 +226,10 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
         laborTotalCost: Decimal;
         qty: Decimal;
         techCost: Decimal;
-        AssemblyHeader: Record "Assembly Header";
     begin
-        qty := AssemblyHeader.Quantity;
-        techCost := AssemblyHeader."Tech Teir Cost";
+        Rec.CalcFields("TechTeir Cost");
+        qty := Rec.Quantity;
+        techCost := Rec."TechTeir Cost";
         //techCost := Tech Work Teir.Cost the value should be gotten from the selected Tech Teir
         laborTotalCost := qty * techCost;
         exit(laborTotalCost);
@@ -250,6 +252,17 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             until 0 = orderLink.Next();
         end;
         exit(counter);
+    end;
+
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
     end;
 }
 

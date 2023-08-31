@@ -43,7 +43,8 @@ table 50105 "Warehouse State Cue"
         field(6; "New Order"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter(''),
+                                                                    Type = filter('Pick')));
             Caption = 'NEW ORDER';
             Editable = false;
             FieldClass = FlowField;
