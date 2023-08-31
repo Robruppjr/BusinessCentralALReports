@@ -59,26 +59,24 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
     {
         field(50121; "Amount"; Decimal)
         {
-            TableRelation = "Sales Header".Amount where("Amount" = field(Amount));
-            trigger OnValidate()
-            begin
-                SetCurrentFieldNum(FieldNo(Amount));
-                if Amount <> 0 then begin
-                    Amount := SalesHeader.Amount;
-                end;
-            end;
 
         }
         field(50122; "Customer Name"; Text[100])
         {
-            TableRelation = "Sales Header" where("Sell-to Customer Name" = field("Customer Name"));
+            Caption = 'Customer Name';
+            TableRelation = "Sales Header";
             trigger OnValidate()
             begin
-                SetCurrentFieldValue(FieldName("Customer Name"));
-                if "Customer Name" <> '' then begin
-                    "Customer Name" := SalesHeader."Sell-to Customer Name";
+                SetCurrentFieldNum(FieldNo("Order Count"));
+                if "Order Count" <> '' then begin
+                    GetSalesOrder();
+                    "Customer Name" := SalesHeader."Bill-to Name";
                 end;
+                AssemblyHeaderReserve.VerifyChange(Rec, xRec);
+                ClearCurrentFieldNum(FieldNo("Order Count"));
             end;
+
+
         }
         field(50125; "External Document No."; Code[35])
         {
@@ -112,38 +110,39 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             ValidateTableRelation = false;
             ObsoleteState = Removed;
         }
-        field(50129; "Tech Name"; Text[100])
-        {
-            Caption = 'Tech Name';
-            TableRelation = Technician.Description;
-            ValidateTableRelation = false;
-        }
         field(50128; "Order Count"; code[20])
         {
             FieldClass = FlowField;
             CalcFormula = lookup("Assemble-to-Order Link"."Document No." where("Assembly Document Type" = field("Document Type"),
                                                                                 "Assembly Document No." = field("No.")));
         }
+        field(50129; "Tech Name"; Text[100])
+        {
+            Caption = 'Tech Name';
+            TableRelation = Technician.Description;
+            ValidateTableRelation = false;
+        }
+        field(50131; "Tech Work Code"; Code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Tech Work Teir table".Code where(Description = field(TechWorkTeir)));
+        }
         field(50104; "TechWorkTeir"; Text[50])
         {
             Caption = 'Tech Teir';
             TableRelation = "Tech Work Teir table".Description;
             ValidateTableRelation = false;
-            trigger OnValidate()
-            var
-                techTeir: Record "Tech Work Teir table";
-            begin
-                SetCurrentFieldValue(FieldCaption("Tech Name"));
-                if "Tech Name" <> '' then begin
-                    "Tech Teir Cost" := techTeir.Cost;
-                end;
-            end;
         }
         field(50106; "Tech Teir Cost"; Decimal)
         {
             Caption = 'Tech Teir Cost';
-            TableRelation = "Tech Work Teir table".Cost;
-            ValidateTableRelation = false;
+            trigger OnLookup()
+            begin
+                SetCurrentFieldValue(FieldCaption("Tech Work Code"));
+                if "TechWorkTeir" <> '' then begin
+                    "Tech Teir Cost" := "Tech Teir Cost";
+                end;
+            end;
 
         }
         field(50105; "Service Tag"; Text[100])
@@ -151,6 +150,13 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             Caption = 'Service Tag';
         }
     }
+
+    local procedure GetSalesOrder()
+    begin
+        TestField("Order Count");
+        if SalesHeader."No." <> "Order Count" then
+            SalesHeader.Get("Order Count");
+    end;
 
     local procedure SetCurrentFieldNum(NewCurrentFieldNum: Integer): Boolean
     begin
@@ -170,9 +176,16 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         exit(false);
     end;
 
+    local procedure ClearCurrentFieldNum(NewCurrentFieldNum: Integer)
+    begin
+        if CurrentFieldNum = NewCurrentFieldNum then
+            CurrentFieldNum := 0;
+    end;
+
     var
         AssemblyHeader: Record "Assembly Header";
         SalesHeader: Record "Sales Header";
         CurrentFieldNum: Integer;
         CurrentFieldValue: Text;
+        AssemblyHeaderReserve: Codeunit "Assembly Header-Reserve";
 }

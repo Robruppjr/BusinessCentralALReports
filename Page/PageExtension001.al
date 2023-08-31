@@ -302,18 +302,3 @@ pageextension 50109 ExtendCustomerHeader extends "Customer Card"
         }
     }
 }
-
-/*pageextension 50110 ExtendingSalesHeader extends "Sales Order"
-{
-    layout
-    {
-        addafter("Sell-to Customer Name")
-        {
-            field(CompanyName; Rec.CompanyName)
-            {
-                ApplicationArea = All;
-                TableRelation = Customer.CompanyName'
-            }
-        }
-    }
-}*/

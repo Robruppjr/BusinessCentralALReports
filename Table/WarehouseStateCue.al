@@ -11,7 +11,7 @@ table 50105 "Warehouse State Cue"
         field(2; WFP; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('WFP')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts')));
             Caption = 'WAITING FOR PARTS';
             Editable = false;
             FieldClass = FlowField;
@@ -19,7 +19,7 @@ table 50105 "Warehouse State Cue"
         field(3; Start; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('START')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked')));
             Caption = 'Pick Started';
             Editable = false;
             FieldClass = FlowField;
@@ -35,7 +35,7 @@ table 50105 "Warehouse State Cue"
         field(5; "All Picks"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('START' | 'WFP' | '')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked' | 'Waiting for Parts' | '')));
             Caption = 'All Active Picks';
             Editable = false;
             FieldClass = FlowField;
@@ -47,6 +47,12 @@ table 50105 "Warehouse State Cue"
             Caption = 'NEW ORDER';
             Editable = false;
             FieldClass = FlowField;
+        }
+        field(50; "Date Filter"; Date)
+        {
+            Caption = 'Date Filter';
+            Editable = false;
+            FieldClass = FlowFilter;
         }
     }
 

@@ -4,10 +4,6 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
     {
         addafter("Sorting Method")
         {
-            field("State Desc"; Rec."State Desc")
-            {
-                ApplicationArea = all;
-            }
             field(Technician; Rec.Technician)
             {
                 ApplicationArea = all;
@@ -16,11 +12,15 @@ pageextension 50110 WarehousePickExt extends "Warehouse Pick"
             {
                 ApplicationArea = all;
             }
+            field("State Desc"; Rec."State Desc")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
     {
-        addafter("&Print")
+        addfirst(Reporting)
         {
             action("Pick Sheet Print")
             {

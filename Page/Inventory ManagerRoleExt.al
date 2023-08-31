@@ -9,10 +9,6 @@ pageextension 50202 "Inventory Manager Role Ext" extends "Whse. Basic Role Cente
             {
                 ApplicationArea = all;
             }
-            part("Production Activites"; "Production Activities")
-            {
-                ApplicationArea = All;
-            }
         }
     }
 }

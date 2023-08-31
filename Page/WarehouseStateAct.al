@@ -52,5 +52,7 @@ page 50106 "Warehouse Picks State"
             Rec.Init();
             Rec.Insert();
         end;
+
+        Rec.SetRange("Date Filter", 0D, WorkDate());
     end;
 }
