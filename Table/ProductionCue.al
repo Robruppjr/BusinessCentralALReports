@@ -50,7 +50,22 @@ table 50104 "Production Cue"
             Editable = false;
             FieldClass = FlowField;
         }
-
+        field(7; WFP; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts')));
+            Caption = 'WAITING FOR PARTS';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(8; Start; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked')));
+            Caption = 'Pick Started';
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(50; "Date Filter"; Date)
         {
             Caption = 'Date Filter';

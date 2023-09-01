@@ -148,11 +148,10 @@ pageextension 50105 AssemblyExtension extends "Assembly Order Subform"
     {
         addafter("No.")
         {
-            field("Item Category"; Rec."Item Category")
+            field("Item Category Code"; Rec."Item Category Code")
             {
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
                 Caption = 'Item Category';
-                TableRelation = "Item Category"."Parent Category";
             }
         }
     }
@@ -170,11 +169,11 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
                 ApplicationArea = all;
 
             }
-            field(Amount; Rec.Amount)
+            field(Amount; GetAmount())
             {
                 ApplicationArea = all;
             }
-            field("External Document No."; Rec."External Document No.")
+            field("External Document No."; GetExternalDocumentNo())
             {
                 ApplicationArea = all;
             }
@@ -202,6 +201,7 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             {
                 Caption = 'SO Count';
                 ApplicationArea = all;
+
             }
             field("Service Tag"; Rec."Service Tag")
             {
@@ -225,6 +225,12 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
     {
 
     }
+    trigger OnAfterGetRecord()
+    begin
+        GetCustName();
+        GetSOCount();
+    end;
+
     local procedure CalcLaborCost(): Decimal;
     var
         laborTotalCost: Decimal;
@@ -265,6 +271,28 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
         Rec.CalcFields("Order Count");
         if SalesHead.Get(1, Rec."Order Count") then begin
             exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
+    end;
+
+    local procedure GetAmount(): Decimal;
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead.Amount);
+        end else
+            exit(0);
+    end;
+
+    local procedure GetExternalDocumentNo(): Code[35];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."External Document No.");
         end else
             exit('');
     end;

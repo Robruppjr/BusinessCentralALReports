@@ -4,7 +4,8 @@ pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Ce
     {
         addfirst(rolecenter)
         {
-            part("Production Activites"; "Production Activities")
+
+            part("Production Activites 02"; "Production Activities 02")
             {
                 ApplicationArea = All;
             }

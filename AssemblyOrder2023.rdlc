@@ -54,7 +54,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.45846cm</Width>
+                  <Width>2.68552cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.45846cm</Width>
@@ -85,7 +85,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Assembly No,</Value>
+                                  <Value>Assembly No.</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -245,7 +245,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>No Assembly Header</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -282,7 +282,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>Customer Name</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -306,14 +306,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox78">
+                        <Textbox Name="Customer_Name">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Customer_Name.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -325,7 +325,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox78</rd:DefaultName>
+                          <rd:DefaultName>Customer_Name</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -441,7 +441,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!No_AssemblyHeader.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -478,7 +478,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>SO Count</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1376,7 +1376,6 @@
                             <PaddingRight>5pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1672,7 +1671,7 @@
             <Top>0.56409in</Top>
             <Left>0.10417in</Left>
             <Height>3.57816cm</Height>
-            <Width>19.23229cm</Width>
+            <Width>19.45935cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1695,10 +1694,10 @@
                   <Width>2.61939cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.76125cm</Width>
+                  <Width>1.25854cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.93072cm</Width>
+                  <Width>2.43343cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.12453cm</Width>
@@ -1717,7 +1716,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>Category</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1845,7 +1844,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!QuantityPer_AssemblyLineCaption.Value</Value>
+                                  <Value>Quantity Per Order</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1877,7 +1876,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!QuantityPickedCaption.Value</Value>
+                                  <Value>Picked</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1956,7 +1955,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>I</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>1pt</FontSize>
@@ -1988,14 +1987,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
+                        <Textbox Name="Item_Category_Code">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Item_Category_Code.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2005,7 +2004,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <rd:DefaultName>Item_Category_Code</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -2261,7 +2260,7 @@
         <Height>11in</Height>
         <Style />
       </Body>
-      <Width>7.7352in</Width>
+      <Width>7.76533in</Width>
       <Page>
         <Style />
       </Page>
@@ -2811,6 +2810,12 @@ End Function
         </Field>
         <Field Name="QuantityToConsume_AssemblyLineFormat">
           <DataField>QuantityToConsume_AssemblyLineFormat</DataField>
+        </Field>
+        <Field Name="Customer_Name">
+          <DataField>Customer_Name</DataField>
+        </Field>
+        <Field Name="Item_Category_Code">
+          <DataField>Item_Category_Code</DataField>
         </Field>
       </Fields>
       <Query>

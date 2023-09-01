@@ -61,6 +61,12 @@ pageextension 50114 SalesHeaderExt extends "Sales Order"
         modify("Salesperson Code")
         {
             Importance = Promoted;
+            ShowMandatory = true;
+            Visible = true;
+        }
+        modify("Shortcut Dimension 1 Code")
+        {
+            ShowMandatory = true;
         }
     }
 

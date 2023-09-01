@@ -34,7 +34,7 @@ tableextension 50105 WarehousePickExt extends "Warehouse Activity Header"
         field(50131; "Technician"; Text[200])
         {
             Caption = 'Technician';
-            TableRelation = "Assembly Header"."Tech Name";
+            TableRelation = Technician.Description;
         }
         field(50104; "TechWorkTeir"; Text[50])
         {

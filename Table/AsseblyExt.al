@@ -35,25 +35,19 @@ tableextension 50108 AssemblyExtension extends "Assembly Line"
     {
         field(50120; "Item Category"; Code[20])
         {
-
             TableRelation = "Item Category" where(Code = field("Item Category"));
             ValidateTableRelation = false;
-            trigger OnValidate();
-            var
-                Item: Record Item;
-                ItemCatgoryTable: Record "Item Category";
-                ItemCategory: Code[20];
-            begin
-                if Item.Get("No.") then
-                    "Item Category" := Item."Item Category Code";
-                if ItemCatgoryTable.Get(ItemCatgoryTable.Code) then
-                    "Item Category" := ItemCatgoryTable."Parent Category";
-            end;
+            ObsoleteState = Pending;
         }
         field(50121; "Item Tech Tier"; Text[50])
         {
             FieldClass = FlowField;
             CalcFormula = lookup(Item."Tech Tier" where("No." = field("No.")));
+        }
+        field(50122; "Item Category Code"; Code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Item Category Code" where("No." = field("No.")));
         }
     }
 }
@@ -80,7 +74,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         }
         field(50124; "Unit Price"; Decimal)
         {
-            ObsoleteState = Removed;
+
         }
         field(50126; "State"; Code[20])
         {
@@ -94,12 +88,16 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             Caption = 'Order State';
             TableRelation = "Order State".Description;
             ValidateTableRelation = false;
+            trigger OnValidate()
+            begin
+                if "State Desc" <> '' then begin
+
+                end;
+            end;
         }
         field(50127; Technician; Code[20])
         {
-            Caption = 'Technician';
-            TableRelation = Technician;
-            ValidateTableRelation = false;
+            //REMOVED
             ObsoleteState = Removed;
         }
         field(50128; "Order Count"; code[20])
@@ -205,6 +203,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         if CurrentFieldNum = NewCurrentFieldNum then
             CurrentFieldNum := 0;
     end;
+
 
     var
         AssemblyHeader: Record "Assembly Header";
