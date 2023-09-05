@@ -27,7 +27,8 @@ table 50105 "Warehouse State Cue"
         field(4; "End"; Integer)
         {
             AccessByPermission = tabledata "Registered Whse. Activity Hdr." = R;
-            CalcFormula = count("Registered Whse. Activity Hdr." where("Registering Date" = filter('>1M')));
+            CalcFormula = count("Registered Whse. Activity Hdr." where("Registering Date" = filter('>1M'),
+                                                                        Type = filter('Pick')));
             Caption = 'Completed Picks';
             Editable = false;
             FieldClass = FlowField;

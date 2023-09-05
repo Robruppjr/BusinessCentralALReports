@@ -49,6 +49,52 @@ page 50107 "Technician Cues"
                     DrillDownPageId = "Assembly Orders";
                 }
             }
+            cuegroup("Order Status")
+            {
+                Caption = 'Order Status (Today)';
+                field("Priority N.A."; Rec."Priority N.A.")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Priority A."; Rec."Priority A.")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Available N.A."; Rec."Available N.A.")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Available A."; Rec."Available A.")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Given to Shipping"; Rec."Given to Shipping")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Local Pickup"; Rec."Local Pickup")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field("Shipped Today"; Rec."Shipped Today")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Posted Assembly Orders";
+                }
+            }
         }
 
     }

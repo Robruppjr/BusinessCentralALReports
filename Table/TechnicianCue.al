@@ -62,6 +62,67 @@ table 50106 "Technician Cues"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(8; "Priority N.A."; Integer)
+        {
+            Caption = 'Priority Not Assigned';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter(''),
+                                                        "Due Date" = filter('<T')));
+            Editable = false;
+        }
+        field(9; "Priority A."; Integer)
+        {
+            Caption = 'Priority Assigned';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Assigned to Technician'),
+                                                        "Due Date" = filter('<T')));
+            Editable = false;
+        }
+        field(10; "Available N.A."; Integer)
+        {
+            Caption = 'Available Not Assigned';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter(''),
+                                                        "Due Date" = filter('T')));
+            Editable = false;
+        }
+        field(11; "Available A."; Integer)
+        {
+            Caption = 'Available Assigned';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Assigned to Technician'),
+                                                        "Due Date" = filter('T')));
+            Editable = false;
+        }
+        field(12; "Given to Shipping"; Integer)
+        {
+            Caption = 'Given to shipping';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Given to shipping')));
+            Editable = False;
+
+        }
+        field(13; "Local Pickup"; Integer)
+        {
+            Caption = 'Local Pick Up';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Local Pikc Up')));
+            Editable = false;
+        }
+        field(14; "Shipped Today"; Integer)
+        {
+            Caption = 'Shipped Today';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Posted Assembly Header" = R;
+            CalcFormula = count("Posted Assembly Header" where("Posting Date" = filter('T')));
+            Editable = false;
+        }
     }
 
     keys

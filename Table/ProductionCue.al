@@ -35,7 +35,8 @@ table 50104 "Production Cue"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter('TECHONDECK' | '' | 'New Order'),
-                                                        "Creation Date" = filter('<T')));
+                                                        "Creation Date" = filter('<T'),
+                                                        "Document Type" = filter('Order')));
 
             Caption = 'On Deck - Priority';
             Editable = false;
@@ -44,7 +45,7 @@ table 50104 "Production Cue"
         field(6; "All Orders"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header");
+            CalcFormula = count("Assembly Header" where("Document Type" = filter('Order')));
 
             Caption = 'Orders Ready To Ship';
             Editable = false;

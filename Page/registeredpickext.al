@@ -2,6 +2,13 @@ pageextension 50112 "Regesitered Pick Ext" extends "Registered Pick"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+            }
+        }
 
     }
     actions
@@ -35,4 +42,9 @@ pageextension 50112 "Regesitered Pick Ext" extends "Registered Pick"
             }
         }
     }
+    local procedure GetCustName(): Text[100];
+    begin
+
+    end;
+
 }
