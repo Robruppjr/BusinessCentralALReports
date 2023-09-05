@@ -1,4 +1,4 @@
-pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Center"
+pageextension 50204 "Technician Dispactecher View" extends "Service Technician Role Center"
 {
     layout
     {
@@ -8,7 +8,7 @@ pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Ce
             {
                 ApplicationArea = all;
             }
-            part("Service Manager BomSqaud Cue"; "Service Manager BomSqaud Cue")
+            part("Technician BomSqaud Cue"; "Technician BomSqaud Cue")
             {
                 ApplicationArea = all;
             }

@@ -1,6 +1,6 @@
-/*table 50105 "Warehouse State Cue"
+table 50108 "Service Manager BOMSquad Cues"
 {
-    Caption = 'Warehouse State Cue';
+    Caption = 'BOMSquad Pending Orders';
 
     fields
     {
@@ -8,43 +8,36 @@
         {
             Caption = 'Primary Key';
         }
-        field(2; WFP; Integer)
+        field(2; "Not Started"; Integer)
         {
-            AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts')));
-            Caption = 'WAITING FOR PARTS';
-            Editable = false;
+            Caption = 'Not Started';
             FieldClass = FlowField;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter(''),
+                                                                    Type = filter('Pick')));
+            Editable = false;
         }
         field(3; Start; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked'),
+                                                                    Type = filter('Pick')));
             Caption = 'Pick Started';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(4; "End"; Integer)
+        field(4; WFP; Integer)
         {
-            AccessByPermission = tabledata "Registered Whse. Activity Hdr." = R;
-            CalcFormula = count("Registered Whse. Activity Hdr." where("Registering Date" = filter('>1M'),
-                                                                        Type = filter('Pick')));
-            Caption = 'Completed Picks';
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts'),
+                                                                    Type = filter('Pick')));
+            Caption = 'WAITING FOR PARTS';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(5; "All Picks"; Integer)
+        field(5; "On Hold"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked' | 'Waiting for Parts' | '')));
-            Caption = 'All Active Picks';
-            Editable = false;
-            FieldClass = FlowField;
-        }
-        field(6; "New Order"; Integer)
-        {
-            AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter(''),
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('On Hold'),
                                                                     Type = filter('Pick')));
             Caption = 'NEW ORDER';
             Editable = false;
@@ -65,4 +58,4 @@
             Clustered = true;
         }
     }
-}*/
+}
