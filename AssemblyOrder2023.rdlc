@@ -334,6 +334,7 @@
                             <PaddingRight>5pt</PaddingRight>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -503,14 +504,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox131">
+                        <Textbox Name="SOCount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!SOCount.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -522,7 +523,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox131</rd:DefaultName>
+                          <rd:DefaultName>SOCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2813,6 +2814,9 @@ End Function
         </Field>
         <Field Name="Customer_Name">
           <DataField>Customer_Name</DataField>
+        </Field>
+        <Field Name="SOCount">
+          <DataField>SOCount</DataField>
         </Field>
         <Field Name="Item_Category_Code">
           <DataField>Item_Category_Code</DataField>
