@@ -8,14 +8,14 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
         //SO COunt field
         add("Assembly Header")
         {
-            column(Customer_Name; "Customer Name")
+            column(Customer_Name; GetCustName())
             {
 
             }
-            /*column(SOCount; GetSOCount())
+            column(SOCount; GetSOCount())
             {
 
-            }*/
+            }
 
         }
         add("Assembly Line")
@@ -38,5 +38,33 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
             Customer_Name := AssemblyOrder."Customer Name";
         end;
     end;*/
+    local procedure GetSOCount(): Integer;
+    var
+        orderLink: Record "Assemble-to-Order Link";
+        counter: Integer;
+    begin
+        "Assembly Header".CalcFields("Order Count");
+        counter := 0;
+        orderLink.SetCurrentKey("Document Type", "Document No.");
+        orderLink.SetRange("Document Type", orderLink."Document Type"::Order);
+        orderLink.SetRange("Document No.", "Assembly Header"."Order Count");
+        if orderLink.FindSet() then begin
+            repeat
+                counter := counter + 1;
+            until 0 = orderLink.Next();
+        end;
+        exit(counter);
+    end;
+
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        "Assembly Header".CalcFields("Order Count");
+        if SalesHead.Get(1, "Assembly Header"."Order Count") then begin
+            exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
+    end;
 }
 
