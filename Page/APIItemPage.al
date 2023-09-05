@@ -2,9 +2,9 @@ page 50111 "API Item Page"
 {
     PageType = API;
 
-    APIVersion = 'v1.0';
-    APIPublisher = 'bctech';
-    APIGroup = 'demo';
+    APIVersion = 'v2.0';
+    APIPublisher = 'techVitality';
+    APIGroup = 'customAPI';
 
     EntityCaption = 'Item';
     EntitySetCaption = 'Items';
