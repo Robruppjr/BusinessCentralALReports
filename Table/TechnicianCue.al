@@ -12,7 +12,8 @@ table 50106 "Technician Cues"
         field(2; "No Assigned Tech"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("Tech Name" = filter('')));
+            CalcFormula = count("Assembly Header" where("Tech Name" = filter(''),
+                                                        "Document Type" = filter('Order')));
             Caption = 'NO ASSIGNED TECH';
             Editable = false;
             FieldClass = FlowField;
@@ -21,7 +22,8 @@ table 50106 "Technician Cues"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter'),
-                                                        "State Desc" = filter('<> Given to shipping')));
+                                                        "State Desc" = filter('<> Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Caption = 'Peter';
             Editable = false;
             FieldClass = FlowField;
@@ -30,7 +32,8 @@ table 50106 "Technician Cues"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Willie'),
-                                                        "State Desc" = filter('<> Given to shipping')));
+                                                        "State Desc" = filter('<> Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Caption = 'Willie';
             Editable = false;
             FieldClass = FlowField;
@@ -39,7 +42,8 @@ table 50106 "Technician Cues"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Saul'),
-                                                        "State Desc" = filter('<> Given to shipping')));
+                                                        "State Desc" = filter('<> Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Caption = 'Saul';
             Editable = false;
             FieldClass = FlowField;
@@ -48,7 +52,8 @@ table 50106 "Technician Cues"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Jonah'),
-                                                        "State Desc" = filter('<> Given to shipping')));
+                                                        "State Desc" = filter('<> Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Caption = 'Jonah';
             Editable = false;
             FieldClass = FlowField;
@@ -57,7 +62,8 @@ table 50106 "Technician Cues"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Other Tech'),
-                                                        "State Desc" = filter('<> Given to shipping')));
+                                                        "State Desc" = filter('<> Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Caption = 'Other Tech';
             Editable = false;
             FieldClass = FlowField;
@@ -68,7 +74,8 @@ table 50106 "Technician Cues"
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter(''),
-                                                        "Due Date" = filter('<T')));
+                                                        "Due Date" = filter('<T'),
+                                                        "Document Type" = filter('Order')));
             Editable = false;
         }
         field(9; "Priority A."; Integer)
@@ -77,7 +84,8 @@ table 50106 "Technician Cues"
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter('Assigned to Technician'),
-                                                        "Due Date" = filter('<T')));
+                                                        "Due Date" = filter('<T'),
+                                                        "Document Type" = filter('Order')));
             Editable = false;
         }
         field(10; "Available N.A."; Integer)
@@ -86,7 +94,8 @@ table 50106 "Technician Cues"
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter(''),
-                                                        "Due Date" = filter('T')));
+                                                        "Due Date" = filter('T'),
+                                                        "Document Type" = filter('Order')));
             Editable = false;
         }
         field(11; "Available A."; Integer)
@@ -95,7 +104,8 @@ table 50106 "Technician Cues"
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter('Assigned to Technician'),
-                                                        "Due Date" = filter('T')));
+                                                        "Due Date" = filter('T'),
+                                                        "Document Type" = filter('Order')));
             Editable = false;
         }
         field(12; "Given to Shipping"; Integer)
@@ -103,7 +113,8 @@ table 50106 "Technician Cues"
             Caption = 'Given to shipping';
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("State Desc" = filter('Given to shipping')));
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Given to shipping'),
+                                                        "Document Type" = filter('Order')));
             Editable = False;
 
         }
@@ -112,7 +123,8 @@ table 50106 "Technician Cues"
             Caption = 'Local Pick Up';
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("State Desc" = filter('Local Pikc Up')));
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Local Pikc Up'),
+                                                        "Document Type" = filter('Order')));
             Editable = false;
         }
         field(14; "Shipped Today"; Integer)
