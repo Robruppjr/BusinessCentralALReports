@@ -183,6 +183,12 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = All;
+                trigger OnValidate()
+                var
+                    TechNames: Record Technician;
+                begin
+                    GetRecord(TechNames);
+                end;
             }
             field("Tech Name"; Rec."Tech Name")
             {

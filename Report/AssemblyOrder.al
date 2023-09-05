@@ -8,7 +8,7 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
         //SO COunt field
         add("Assembly Header")
         {
-            column(Customer_Name; "Assembly Header"."Customer Name")
+            column(Customer_Name; "Customer Name")
             {
 
             }
@@ -32,9 +32,10 @@ reportextension 50108 "AssemblyOrder2023" extends "Assembly Order"
         AssemblyOrder: Record "Assembly Header";
         SalesHeader: Record "Sales Header";
         Customer_Name: Text[100];
+        AssembNo: Code[20];
     begin
-        if AssemblyOrder.Get("Assembly Header"."Customer Name") then begin
-            Customer_Name := "Assembly Header"."Customer Name";
+        if AssemblyOrder.Get(CurrReport."Assembly Header"."No.") then begin
+            Customer_Name := AssemblyOrder."Customer Name";
         end;
     end;*/
 }

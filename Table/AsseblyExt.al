@@ -88,12 +88,6 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
             Caption = 'Order State';
             TableRelation = "Order State".Description;
             ValidateTableRelation = false;
-            trigger OnValidate()
-            begin
-                if "State Desc" <> '' then begin
-
-                end;
-            end;
         }
         field(50127; Technician; Code[20])
         {
