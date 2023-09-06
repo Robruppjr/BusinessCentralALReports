@@ -10,17 +10,16 @@ table 50108 "Service Manager BOMSquad Cues"
         }
         field(2; "Not Started"; Integer)
         {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('')));
             Caption = 'Not Started';
             FieldClass = FlowField;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter(''),
-                                                                    Type = filter('Pick')));
             Editable = false;
         }
         field(3; Start; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked'),
-                                                                    Type = filter('Pick')));
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked')));
             Caption = 'Pick Started';
             Editable = false;
             FieldClass = FlowField;
@@ -29,7 +28,8 @@ table 50108 "Service Manager BOMSquad Cues"
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
             CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts'),
-                                                                    Type = filter('Pick')));
+                                                                    Type = filter('Pick'),
+                                                                    "Location Code" = filter('""|BOMSQD|BUNKER|LOCKBOX|NORTH|PRODUCTION|TVS|TVS2905|VAULT|WAREHOUSE')));
             Caption = 'WAITING FOR PARTS';
             Editable = false;
             FieldClass = FlowField;
@@ -37,9 +37,8 @@ table 50108 "Service Manager BOMSquad Cues"
         field(5; "On Hold"; Integer)
         {
             AccessByPermission = tabledata "Warehouse Activity Header" = R;
-            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('On Hold'),
-                                                                    Type = filter('Pick')));
-            Caption = 'NEW ORDER';
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('On Hold')));
+            Caption = 'On Hold';
             Editable = false;
             FieldClass = FlowField;
         }

@@ -8,9 +8,10 @@ pageextension 50200 "Service Dispatcher Ext" extends "Service Dispatcher Role Ce
             {
                 ApplicationArea = all;
             }
-            part("Service Manager BomSqaud Cue"; "Service Manager BomSqaud Cue")
+            part("Service Manager BomSqaud Cues"; "Service Manager BomSqaud Cues")
             {
                 ApplicationArea = all;
+
             }
 
         }

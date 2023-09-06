@@ -10,6 +10,7 @@ table 50107 "Tech Work Teir table"
         field(1; "Code"; Code[20])
         {
             Caption = 'Code';
+
             NotBlank = true;
 
         }

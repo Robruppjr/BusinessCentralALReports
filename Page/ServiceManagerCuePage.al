@@ -1,17 +1,18 @@
-page 50109 "Service Manager BomSqaud Cue"
+page 50109 "Service Manager BomSqaud Cues"
 {
     Caption = 'BOMSquad Pending Orders';
     PageType = CardPart;
     RefreshOnActivate = true;
-    SourceTable = "Service Manager BOMSquad Cues";
+    SourceTable = "Warehouse State Cue";
     layout
     {
         area(Content)
         {
             cuegroup("Upcoming Picks (IN PROCESS)")
             {
-                field("Not Started"; Rec."Not Started")
+                field("New Order"; Rec."New Order")
                 {
+                    Caption = 'Not Started';
                     ApplicationArea = all;
                     DrillDown = true;
                     DrillDownPageId = "Warehouse Picks";

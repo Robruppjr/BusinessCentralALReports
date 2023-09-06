@@ -50,6 +50,14 @@ table 50105 "Warehouse State Cue"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(7; "On Hold"; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('On Hold')));
+            Caption = 'On Hold';
+            FieldClass = FlowField;
+            Editable = false;
+        }
         field(50; "Date Filter"; Date)
         {
             Caption = 'Date Filter';
