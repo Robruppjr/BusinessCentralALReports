@@ -71,3 +71,32 @@ pageextension 50114 SalesHeaderExt extends "Sales Order"
     }
 
 }
+pageextension 50119 SalesOrdersExt extends "Sales Order List"
+{
+    layout
+    {
+        addafter("Sell-to Customer Name")
+        {
+            /*field("Order State"; GetOrderState())
+            {
+                ApplicationArea = all;
+            }*/
+        }
+    }
+    trigger OnOpenPage()
+    begin
+        Rec.SetAscending("No.", false);
+    end;
+
+    /*local procedure GetOrderState(): Text[200];
+    var
+        AssemblyHead: Record "Assembly Header";
+        SalesHead: Record "Sales Header";
+        AssembleToOrder: Record "Assemble-to-Order Link";
+        begin
+            Rec.CalcFields();
+            if AssemblyHead.Get(1, Rec."Order State") then begin
+
+            end;
+        end;*/
+}

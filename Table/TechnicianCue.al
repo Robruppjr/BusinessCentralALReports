@@ -139,7 +139,7 @@ table 50106 "Technician Cues"
             Caption = 'Local Pick Up';
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("State Desc" = filter('Local Pikc Up'),
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Local Pick Up'),
                                                         "Document Type" = filter('Order'),
                                                         "Status" = filter('Released')));
             Editable = false;
@@ -159,6 +159,28 @@ table 50106 "Technician Cues"
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),
                                                         "State Desc" = filter('Assigned to Technician'),
+                                                        Status = filter('Released'),
+                                                        "Document Type" = filter('Order')));
+            Editable = false;
+        }
+        field(16; "Partial Shipment"; Integer)
+        {
+            Caption = 'Partial Shipment';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),
+                                                        "State Desc" = filter('Techs - Partial Shipment'),
+                                                        Status = filter('Released'),
+                                                        "Document Type" = filter('Order')));
+            Editable = false;
+        }
+        field(17; "WFS"; Integer)
+        {
+            Caption = 'Waiting For Software';
+            FieldClass = FlowField;
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),
+                                                        "State Desc" = filter('Waiting for Software'),
                                                         Status = filter('Released'),
                                                         "Document Type" = filter('Order')));
             Editable = false;

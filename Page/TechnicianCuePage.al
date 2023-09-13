@@ -62,6 +62,18 @@ page 50107 "Technician Cues"
                     DrillDownPageId = "Posted Assembly Orders";
 
                 }
+                field("Partial Shipment"; Rec."Partial Shipment")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
+                field(WFS; Rec.WFS)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
                 cuegroup("Order Status")
                 {
                     Caption = 'Order Status (Today)';
