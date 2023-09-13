@@ -115,6 +115,7 @@ tableextension 50109 AssenblyHeaderExtension extends "Assembly Header"
         field(50104; "TechWorkTeir"; Text[50])
         {
             Caption = 'Tech Tier';
+            Editable = false;
             trigger OnValidate()
             var
                 myInt: Integer;

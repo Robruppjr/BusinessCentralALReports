@@ -154,7 +154,7 @@ table 50106 "Technician Cues"
         }
         field(15; "All Asigned"; Integer)
         {
-            Caption = 'All Asigned';
+            Caption = 'All Assigned';
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),

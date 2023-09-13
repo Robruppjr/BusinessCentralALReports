@@ -11,7 +11,7 @@ page 50107 "Technician Cues"
         {
             cuegroup("Technician Cues")
             {
-                Caption = 'Assinged Orders';
+                Caption = 'Assigned Orders';
 
                 field(Tech01; Rec.Tech01)
                 {
