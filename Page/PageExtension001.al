@@ -332,6 +332,10 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
                 ApplicationArea = all;
 
             }
+            field("State Desc"; Rec."State Desc")
+            {
+                ApplicationArea = all;
+            }
             field("Tech Name"; Rec."Tech Name")
             {
                 ApplicationArea = all;
