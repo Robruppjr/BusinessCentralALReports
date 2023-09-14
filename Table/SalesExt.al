@@ -1,11 +1,10 @@
-tableextension 50111 "Sales Header Ext" extends "Sales Header"
+tableextension 50118 "Sales Header Ext" extends "Sales Header"
 {
     fields
     {
-        // Add changes to table fields here
-
+        field(50100; "Order State"; Text[200])
+        {
+            Caption = 'Order State';
+        }
     }
-
-    var
-        myInt: Integer;
 }

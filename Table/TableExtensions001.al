@@ -52,15 +52,21 @@ tableextension 50103 MyExtension extends Item
             DataClassification = ToBeClassified;
             Caption = 'Remove From View';
             TableRelation = "Bin Content"."Bin Code";
-            ObsoleteState =Removed;
+            ObsoleteState = Removed;
             //CalcFormula = lookup ("Bin Content"."Item No." where ("Item No." = field ("No.")));
         }
         field(50115; BinLocation01; Code[20])
         {
             Caption = 'Bin Location';
             TableRelation = "Bin Content"."Bin Code";
-            FieldClass =FlowField;
-            CalcFormula = lookup ("Bin Content"."Bin Code" where ("Item No." = field ("No.")));
+            FieldClass = FlowField;
+            CalcFormula = lookup("Bin Content"."Bin Code" where("Item No." = field("No.")));
+        }
+        field(50116; "Tech Tier"; Text[50])
+        {
+            Caption = 'Tech Tier';
+            TableRelation = "Tech Work Teir table".Description;
+            ValidateTableRelation = false;
         }
     }
     var

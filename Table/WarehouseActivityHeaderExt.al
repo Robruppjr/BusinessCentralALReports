@@ -22,26 +22,29 @@ tableextension 50105 WarehousePickExt extends "Warehouse Activity Header"
         }
         field(50102; "State"; Code[20])
         {
+            TableRelation = "Warehouse Pick State" where(Code = field(State));
             ObsoleteState = Removed;
         }
         field(50103; "State Desc"; Text[200])
         {
             Caption = 'Warehouse State';
             TableRelation = "Warehouse Pick State".Description;
+            ValidateTableRelation = false;
 
         }
         field(50131; "Technician"; Text[200])
         {
             Caption = 'Technician';
-            TableRelation = "Assembly Header" where("Tech Name" = field(Technician));
-            AccessByPermission = tabledata Technician = R;
-            trigger OnValidate()
-            begin
-                SetCurrentFieldValue(FieldCaption(Technician));
-                if Technician <> '' then begin
-                    Technician := AssemblyHeader."Tech Name";
-                end;
-            end;
+            TableRelation = Technician.Description;
+        }
+        field(50104; "TechWorkTeir"; Text[50])
+        {
+            Caption = 'Tech Teir';
+            TableRelation = "Tech Work Teir table".Description;
+        }
+        field(50133; "Customer Name"; Text[100])
+        {
+            Caption = 'Customer Name';
         }
     }
     local procedure SetCurrentFieldNum(NewCurrentFieldNum: Integer): Boolean

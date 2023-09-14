@@ -23,6 +23,10 @@ pageextension 50103 MyExtension extends "Item Card"
                 ApplicationArea = All;
                 NotBlank = true;
             }
+            field("Tech Tier"; Rec."Tech Tier")
+            {
+                ApplicationArea = all;
+            }
 
         }
         addafter(VariantMandatoryDefaultNo)
@@ -144,11 +148,10 @@ pageextension 50105 AssemblyExtension extends "Assembly Order Subform"
     {
         addafter("No.")
         {
-            field("Item Category"; Rec."Item Category")
+            field("Item Category Code"; Rec."Item Category Code")
             {
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
                 Caption = 'Item Category';
-                TableRelation = "Item Category"."Parent Category";
             }
         }
     }
@@ -159,13 +162,39 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
 
     layout
     {
+        addafter(Description)
+        {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+
+            }
+            field(Amount; GetAmount())
+            {
+                ApplicationArea = all;
+            }
+            field("External Document No."; GetExternalDocumentNo())
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Status)
         {
             field("State Desc"; Rec."State Desc")
             {
                 ApplicationArea = All;
+                trigger OnValidate()
+                var
+                    TechNames: Record Technician;
+                begin
+                    GetRecord(TechNames);
+                end;
             }
             field("Tech Name"; Rec."Tech Name")
+            {
+                ApplicationArea = all;
+            }
+            field(TechWorkTeir; Rec.TechWorkTeir)
             {
                 ApplicationArea = all;
             }
@@ -178,6 +207,22 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             {
                 Caption = 'SO Count';
                 ApplicationArea = all;
+
+            }
+            field("Service Tag"; Rec."Service Tag")
+            {
+                Caption = 'Service Tag';
+                ApplicationArea = all;
+            }
+            field(CalcLaborCost; CalcLaborCost)
+            {
+                Caption = 'Labor Cost';
+                ApplicationArea = all;
+            }
+            field("TechTeir Cost"; Rec."TechTeir Cost")
+            {
+                //Before Publish to production clean up 'Tech Tier Cost'
+                ApplicationArea = all;
             }
         }
 
@@ -186,6 +231,27 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
     {
 
     }
+    trigger OnAfterGetRecord()
+    begin
+        GetCustName();
+        GetSOCount();
+    end;
+
+    local procedure CalcLaborCost(): Decimal;
+    var
+        laborTotalCost: Decimal;
+        qty: Decimal;
+        techCost: Decimal;
+    begin
+        Rec.CalcFields("TechTeir Cost");
+        qty := Rec.Quantity;
+        techCost := Rec."TechTeir Cost";
+        //techCost := Tech Work Teir.Cost the value should be gotten from the selected Tech Teir
+        laborTotalCost := qty * techCost;
+        exit(laborTotalCost);
+    end;
+
+
     local procedure GetSOCount(): Integer;
     var
         orderLink: Record "Assemble-to-Order Link";
@@ -202,6 +268,39 @@ pageextension 50106 AssemblyHeaderExtension extends "Assembly Order"
             until 0 = orderLink.Next();
         end;
         exit(counter);
+    end;
+
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
+    end;
+
+    local procedure GetAmount(): Decimal;
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead.Amount);
+        end else
+            exit(0);
+    end;
+
+    local procedure GetExternalDocumentNo(): Code[35];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."External Document No.");
+        end else
+            exit('');
     end;
 }
 
@@ -226,8 +325,38 @@ pageextension 50108 ExtendingAssemblyOrders extends "Assembly Orders"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("Customer Name"; GetCustName())
+            {
+                ApplicationArea = all;
+
+            }
+            field("State Desc"; Rec."State Desc")
+            {
+                ApplicationArea = all;
+            }
+            field("Tech Name"; Rec."Tech Name")
+            {
+                ApplicationArea = all;
+            }
+            field(TechWorkTeir; Rec.TechWorkTeir)
+            {
+                ApplicationArea = all;
+            }
+        }
 
     }
+    local procedure GetCustName(): Text[100];
+    var
+        SalesHead: Record "Sales Header";
+    begin
+        Rec.CalcFields("Order Count");
+        if SalesHead.Get(1, Rec."Order Count") then begin
+            exit(SalesHead."Bill-to Name");
+        end else
+            exit('');
+    end;
 }
 
 pageextension 50109 ExtendCustomerHeader extends "Customer Card"
@@ -243,18 +372,3 @@ pageextension 50109 ExtendCustomerHeader extends "Customer Card"
         }
     }
 }
-
-/*pageextension 50110 ExtendingSalesHeader extends "Sales Order"
-{
-    layout
-    {
-        addafter("Sell-to Customer Name")
-        {
-            field(CompanyName; Rec.CompanyName)
-            {
-                ApplicationArea = All;
-                TableRelation = Customer.CompanyName'
-            }
-        }
-    }
-}*/

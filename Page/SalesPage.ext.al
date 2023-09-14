@@ -61,7 +61,48 @@ pageextension 50114 SalesHeaderExt extends "Sales Order"
         modify("Salesperson Code")
         {
             Importance = Promoted;
+            ShowMandatory = true;
+            Visible = true;
+        }
+        modify("Shortcut Dimension 1 Code")
+        {
+            ShowMandatory = true;
         }
     }
 
+}
+pageextension 50119 SalesOrdersExt extends "Sales Order List"
+{
+    layout
+    {
+        addafter("Sell-to Customer Name")
+        {
+            /*field("Order State"; GetOrderState())
+            {
+                ApplicationArea = all;
+            }*/
+        }
+        modify("No.")
+        {
+            trigger OnBeforeValidate()
+            var
+                myInt: Integer;
+            begin
+
+            end;
+        }
+    }
+
+
+    /*local procedure GetOrderState(): Text[200];
+    var
+        AssemblyHead: Record "Assembly Header";
+        SalesHead: Record "Sales Header";
+        AssembleToOrder: Record "Assemble-to-Order Link";
+        begin
+            Rec.CalcFields();
+            if AssemblyHead.Get(1, Rec."Order State") then begin
+
+            end;
+        end;*/
 }

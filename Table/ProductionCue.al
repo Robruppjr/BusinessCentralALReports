@@ -35,7 +35,8 @@ table 50104 "Production Cue"
         {
             AccessByPermission = tabledata "Assembly Header" = R;
             CalcFormula = count("Assembly Header" where("State Desc" = filter('TECHONDECK' | '' | 'New Order'),
-                                                        "Creation Date" = filter('<T')));
+                                                        "Creation Date" = filter('<T'),
+                                                        "Document Type" = filter('Order')));
 
             Caption = 'On Deck - Priority';
             Editable = false;
@@ -44,13 +45,28 @@ table 50104 "Production Cue"
         field(6; "All Orders"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header");
+            CalcFormula = count("Assembly Header" where("Document Type" = filter('Order')));
 
-            Caption = 'All Orders';
+            Caption = 'Orders Ready To Ship';
             Editable = false;
             FieldClass = FlowField;
         }
-
+        field(7; WFP; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('Waiting for Parts')));
+            Caption = 'WAITING FOR PARTS';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(8; Start; Integer)
+        {
+            AccessByPermission = tabledata "Warehouse Activity Header" = R;
+            CalcFormula = count("Warehouse Activity Header" where("State Desc" = filter('STARTED - BOMSQUAD Picked')));
+            Caption = 'Pick Started';
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(50; "Date Filter"; Date)
         {
             Caption = 'Date Filter';
