@@ -19,12 +19,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.90973in</Width>
+                  <Width>2.92362in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.93971in</Height>
+                  <Height>0.9536in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -39,7 +39,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemName.Value</Value>
                                       <Style>
-                                        <FontSize>14pt</FontSize>
+                                        <FontSize>12pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -48,10 +48,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>itemName</rd:DefaultName>
-                              <Top>0.03473in</Top>
                               <Left>0.01389in</Left>
-                              <Height>0.52306in</Height>
-                              <Width>2.89584in</Width>
+                              <Height>0.55779in</Height>
+                              <Width>2.90973in</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -65,9 +64,9 @@
                               <Value>=Fields!itemBarcode.Value</Value>
                               <MIMEType>image/bmp</MIMEType>
                               <Sizing>Fit</Sizing>
-                              <Top>0.62723in</Top>
+                              <Top>0.58557in</Top>
                               <Left>1.14931in</Left>
-                              <Height>0.31248in</Height>
+                              <Height>0.36803in</Height>
                               <Width>1.76042in</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
@@ -85,7 +84,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemMPN.Value</Value>
                                       <Style>
-                                        <FontSize>14pt</FontSize>
+                                        <FontSize>11pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -94,10 +93,10 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>itemMPN</rd:DefaultName>
-                              <Top>0.62723in</Top>
+                              <Top>0.57168in</Top>
                               <Left>0.01389in</Left>
-                              <Height>0.31248in</Height>
-                              <Width>1.06598in</Width>
+                              <Height>0.35415in</Height>
+                              <Width>1.09376in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
@@ -141,8 +140,8 @@
             <PageBreak>
               <BreakLocation>End</BreakLocation>
             </PageBreak>
-            <Height>0.93971in</Height>
-            <Width>2.90973in</Width>
+            <Height>0.9536in</Height>
+            <Width>2.92362in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -150,7 +149,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.93971in</Height>
+        <Height>0.9536in</Height>
         <Style />
       </Body>
       <Width>2.94097in</Width>
