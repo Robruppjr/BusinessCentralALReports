@@ -116,8 +116,7 @@ table 50106 "Technician Cues"
             Caption = 'Regular Assigned';
             FieldClass = FlowField;
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),
-                                                        "State Desc" = filter('Assigned to Technician'),
+            CalcFormula = count("Assembly Header" where("State Desc" = filter('Assigned to Technician'),
                                                         "Due Date" = filter('T'),
                                                         "Document Type" = filter('Order'),
                                                         "Status" = filter('Released')));
