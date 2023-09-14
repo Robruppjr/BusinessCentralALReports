@@ -39,6 +39,10 @@ pageextension 50103 MyExtension extends "Item Card"
         }
         addafter("Standard Cost")
         {
+            field("Standard Shipping Cost"; Rec."Standard Shipping Cost")
+            {
+                ApplicationArea = all;
+            }
             field(CostUpdated; Rec.CostUpdated)
             {
                 ApplicationArea = all;

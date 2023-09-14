@@ -68,6 +68,12 @@ tableextension 50103 MyExtension extends Item
             TableRelation = "Tech Work Teir table".Description;
             ValidateTableRelation = false;
         }
+        field(50117; "Standard Shipping Cost"; Decimal)
+        {
+            Caption = 'Standrad Shipping Cost';
+            TableRelation = "Standard Shipping Table"."Standard Shipping Cost";
+            ValidateTableRelation = false;
+        }
     }
     var
         myInt: Integer;
