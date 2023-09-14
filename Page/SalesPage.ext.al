@@ -82,11 +82,17 @@ pageextension 50119 SalesOrdersExt extends "Sales Order List"
                 ApplicationArea = all;
             }*/
         }
+        modify("No.")
+        {
+            trigger OnBeforeValidate()
+            var
+                myInt: Integer;
+            begin
+
+            end;
+        }
     }
-    trigger OnOpenPage()
-    begin
-        Rec.SetAscending("No.", false);
-    end;
+
 
     /*local procedure GetOrderState(): Text[200];
     var
