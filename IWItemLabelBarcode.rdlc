@@ -11,28 +11,6 @@
       <rd:DataSourceID>70f07d3e-8c07-4da5-a4c5-b3a737525bf6</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="itemsNo">
-          <DataField>itemsNo</DataField>
-        </Field>
-        <Field Name="itemName">
-          <DataField>itemName</DataField>
-        </Field>
-        <Field Name="itemMPN">
-          <DataField>itemMPN</DataField>
-        </Field>
-        <Field Name="itemBarcode">
-          <DataField>itemBarcode</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -61,7 +39,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemName.Value</Value>
                                       <Style>
-                                        <FontSize>14pt</FontSize>
+                                        <FontSize>12pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -72,7 +50,7 @@
                               <rd:DefaultName>itemName</rd:DefaultName>
                               <Top>0.03473in</Top>
                               <Left>0.01389in</Left>
-                              <Height>0.52306in</Height>
+                              <Height>0.46056in</Height>
                               <Width>2.89584in</Width>
                               <Style>
                                 <Border>
@@ -87,8 +65,8 @@
                               <Value>=Fields!itemBarcode.Value</Value>
                               <MIMEType>image/bmp</MIMEType>
                               <Sizing>Fit</Sizing>
-                              <Top>0.62723in</Top>
-                              <Left>1.14931in</Left>
+                              <Top>0.56473in</Top>
+                              <Left>1.13543in</Left>
                               <Height>0.31248in</Height>
                               <Width>1.76042in</Width>
                               <ZIndex>1</ZIndex>
@@ -107,7 +85,7 @@
                                     <TextRun>
                                       <Value>=Fields!itemMPN.Value</Value>
                                       <Style>
-                                        <FontSize>14pt</FontSize>
+                                        <FontSize>12pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
                                     </TextRun>
@@ -116,7 +94,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>itemMPN</rd:DefaultName>
-                              <Top>0.62723in</Top>
+                              <Top>0.56473in</Top>
                               <Left>0.01389in</Left>
                               <Height>0.31248in</Height>
                               <Width>1.06598in</Width>
@@ -181,12 +159,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -226,4 +198,26 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="itemsNo">
+          <DataField>itemsNo</DataField>
+        </Field>
+        <Field Name="itemName">
+          <DataField>itemName</DataField>
+        </Field>
+        <Field Name="itemMPN">
+          <DataField>itemMPN</DataField>
+        </Field>
+        <Field Name="itemBarcode">
+          <DataField>itemBarcode</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

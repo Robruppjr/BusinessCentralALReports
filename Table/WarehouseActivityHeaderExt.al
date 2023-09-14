@@ -18,6 +18,7 @@ tableextension 50105 WarehousePickExt extends "Warehouse Activity Header"
         {
             Caption = 'Sales Order No.';
             TableRelation = "Assemble-to-Order Link"."Document No." where("Assembly Document No." = field("Assembly Order No."));
+
         }
         field(50102; "State"; Code[20])
         {
