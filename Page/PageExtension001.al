@@ -132,6 +132,10 @@ pageextension 50104 MyExtension01 extends "Item List"
                 ApplicationArea = All;
                 NotBlank = true;
             }
+            field(Sellbrite; Rec.Sellbrite)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

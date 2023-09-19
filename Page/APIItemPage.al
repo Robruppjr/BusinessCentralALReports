@@ -40,6 +40,10 @@ page 50111 "API Item Page"
                 {
                     Caption = 'Standard Cost';
                 }
+                field(Sellbrite; Rec.Sellbrite)
+                {
+                    Caption = 'Sellbrite';
+                }
 
             }
         }

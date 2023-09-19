@@ -45,9 +45,10 @@ table 50104 "Production Cue"
         field(6; "All Orders"; Integer)
         {
             AccessByPermission = tabledata "Assembly Header" = R;
-            CalcFormula = count("Assembly Header" where("Document Type" = filter('Order')));
+            CalcFormula = count("Assembly Header" where("Document Type" = filter('Order'),
+                                                        "State Desc" = filter('Given to shipping|Local Pick Up')));
 
-            Caption = 'Orders Ready To Ship';
+            Caption = 'Local Pickup and Given to Shipping';
             Editable = false;
             FieldClass = FlowField;
         }
