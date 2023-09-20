@@ -184,6 +184,17 @@ table 50106 "Technician Cues"
                                                         "Document Type" = filter('Order')));
             Editable = false;
         }
+        field(18; "WFP-TECH"; Integer)
+        {
+            AccessByPermission = tabledata "Assembly Header" = R;
+            CalcFormula = count("Assembly Header" where("Tech Name" = filter('Peter | Willie | Saul | Jonah | Other Tech'),
+                                                        "State Desc" = filter('Techs - Waiting for Parts'),
+                                                        Status = filter('Released'),
+                                                        "Document Type" = filter('Order')));
+            Caption = 'WFP-TECH';
+            Editable = false;
+            FieldClass = FlowField;
+        }
     }
 
     keys

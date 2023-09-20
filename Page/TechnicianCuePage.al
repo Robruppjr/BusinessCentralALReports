@@ -74,6 +74,12 @@ page 50107 "Technician Cues"
                     DrillDown = true;
                     DrillDownPageId = "Assembly Orders";
                 }
+                field("WFP-TECH"; Rec."WFP-TECH")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    DrillDownPageId = "Assembly Orders";
+                }
                 cuegroup("Order Status")
                 {
                     Caption = 'Order Status (Today)';
