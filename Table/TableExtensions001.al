@@ -70,8 +70,9 @@ tableextension 50103 MyExtension extends Item
         }
         field(50117; "Standard Shipping Cost"; Decimal)
         {
-            Caption = 'Standrad Shipping Cost';
-            TableRelation = "Standard Shipping Table";
+            Caption = 'Standard Shipping Cost';
+            TableRelation = "Standard Shipping Table"."Standard Shipping Cost";
+            ValidateTableRelation = false;
             //FieldClass = FlowField;
             //CalcFormula = count("Standard Shipping Table" where ("Standard Shipping Cost"))
         }

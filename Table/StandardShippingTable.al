@@ -21,27 +21,6 @@ table 50119 "Standard Shipping"
 
     var
         myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }
 
 table 50120 "Standard Shipping Table"
@@ -81,9 +60,8 @@ table 50120 "Standard Shipping Table"
     }
     fieldgroups
     {
-        fieldgroup(Brick; "Code", Description, "Standard Shipping Cost")
+        fieldgroup(DropDown; Code, "Standard Shipping Cost", Description)
         {
-
         }
     }
     var

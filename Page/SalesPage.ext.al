@@ -77,32 +77,44 @@ pageextension 50119 SalesOrdersExt extends "Sales Order List"
     {
         addafter("Sell-to Customer Name")
         {
-            /*field("Order State"; GetOrderState())
+            field("Order State"; GetOrderState())
             {
                 ApplicationArea = all;
-            }*/
+            }
         }
-        modify("No.")
-        {
-            trigger OnBeforeValidate()
-            var
-                myInt: Integer;
-            begin
 
-            end;
-        }
     }
 
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
 
-    /*local procedure GetOrderState(): Text[200];
+    end;
+
+    local procedure GetOrderState(): Text[200];
     var
         AssemblyHead: Record "Assembly Header";
         SalesHead: Record "Sales Header";
         AssembleToOrder: Record "Assemble-to-Order Link";
-        begin
-            Rec.CalcFields();
-            if AssemblyHead.Get(1, Rec."Order State") then begin
+        orderState: Text[200];
+    begin
+        AssembleToOrder.SetCurrentKey("Document Type", "Document No.");
+        orderState := '';
+        AssembleToOrder.SetRange("Document Type", Rec."Document Type");
+        AssembleToOrder.SetRange("Document No.", Rec."No.");
+        if AssembleToOrder.FindSet() then begin
+            repeat
 
-            end;
-        end;*/
+                if AssemblyHead.Get(AssembleToOrder."Assembly Document Type", AssembleToOrder."Assembly Document No.") then begin
+                    if orderState <> '' then
+                        orderState += ' | ' + AssemblyHead."State Desc"
+                    else
+                        orderState := AssemblyHead."State Desc";
+                end;
+
+            until AssembleToOrder.Next() = 0;
+        end;
+        exit(orderState);
+    end;
 }
