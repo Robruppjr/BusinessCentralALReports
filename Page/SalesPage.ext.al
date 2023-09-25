@@ -69,6 +69,18 @@ pageextension 50114 SalesHeaderExt extends "Sales Order"
             ShowMandatory = true;
         }
     }
+    actions
+    {
+        modify(Release)
+        {
+            trigger OnAfterAction()
+            var
+                AssemblyPage: Codeunit "Create Pick";
+            begin
+
+            end;
+        }
+    }
 
 }
 pageextension 50119 SalesOrdersExt extends "Sales Order List"
