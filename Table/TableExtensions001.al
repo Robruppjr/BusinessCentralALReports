@@ -76,6 +76,12 @@ tableextension 50103 MyExtension extends Item
             //FieldClass = FlowField;
             //CalcFormula = count("Standard Shipping Table" where ("Standard Shipping Cost"))
         }
+        /*
+        field(50118; "Markdown"; _______)
+        {
+            Caption: 'Markdown';
+        }
+        */
     }
     var
         myInt: Integer;
